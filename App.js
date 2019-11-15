@@ -12,7 +12,6 @@ import {
   StyleSheet,
   ScrollView,
   View,
-  Text,
   StatusBar,
 } from 'react-native';
 
@@ -23,6 +22,8 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+
+import Text from 'components/Text'
 
 const App: () => React$Node = () => {
   return (
