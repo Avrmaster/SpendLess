@@ -26,7 +26,7 @@ export const Row = styled.View`
 `
 
 export const Name = styled(Text)`
-	font-size: 38px;
+	font-size: 45px;
 	font-weight: 400;
 	text-align: center;
 	flex: 1;
@@ -43,10 +43,12 @@ export const Difficulty = styled(Text)`
 	font-size: 18px;
 	margin-top: 10px;
 	font-style: italic;
+	text-align: center;
 `
 
 export const Price = styled(Text)`
-	font-size: 30px;
+	font-size: 40px;
+	text-align: center;
 `
 
 export const ApplyButton = styled.TouchableOpacity`

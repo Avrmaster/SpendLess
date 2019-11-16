@@ -40,11 +40,9 @@ export default class ChallengeBrief extends React.Component {
 				<Description
 					children={full_description}
 				/>
-				<Row>
-					<Price
-						children={'+' + formatPrice(earn_amount)}
-					/>
-				</Row>
+				<Price
+					children={'+' + formatPrice(earn_amount)}
+				/>
 				<ApplyButton onPress={() => {
 					if (applied) {
 						this.props.onUnapply()
