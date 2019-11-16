@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:WishEarn.xcodeproj">
+      location = "group:/Users/oleksandrleskiv/WebstormProjects/WishEarn/ios/SpendLess.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
