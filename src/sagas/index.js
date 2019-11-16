@@ -13,6 +13,7 @@ import {
 } from './NavigationSagas'
 import {
 	getSpendings,
+	getWishList,
 	getChallenges,
 	applyChallenge,
 	unapplyForChallenge,
@@ -25,8 +26,10 @@ export default function* root() {
 		takeLatest(NavigationTypes.NAVIGATE_TO_REQUEST, navigateToRequest),
 		takeLatest(NavigationTypes.AUTO_NAVIGATION_REQUEST, profileAutoNavigationRequest),
 
+		takeLatest(EarnTypes.WISH_LIST_REQUEST, getWishList),
 		takeLatest(EarnTypes.SPENDINGS_REQUEST, getSpendings),
 		takeLatest(EarnTypes.CHALLENGES_REQUEST, getChallenges),
+
 		takeLatest(EarnTypes.CHALLENGE_APPLY_REQUEST, applyChallenge),
 		takeLatest(EarnTypes.CHALLENGE_UN_APPLY_REQUEST, unapplyForChallenge),
 	])

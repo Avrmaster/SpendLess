@@ -1,10 +1,11 @@
 import React from 'react'
 
-import { ScrollView } from 'react-native'
+import { RefreshControl, ScrollView } from 'react-native'
 import { Text, WishlistItem } from 'components'
 
 import { ButtonAdd, Container, Title, TopWrapper } from './Wishlist.styles'
 import { WishlistNewModal } from './WishlistNewModal'
+import LineError from '../../components/LineError/LineError.component'
 
 let items = [
   {
@@ -33,9 +34,17 @@ let items = [
   },
 ]
 
-export default class Tab1 extends React.Component {
+export default class Wishlist extends React.Component {
   state = {
     modalVisible: false,
+  }
+
+  componentDidMount(): void {
+    this.getWishList()
+  }
+
+  getWishList = () => {
+    this.props.getWishList(this.props.user.id)
   }
 
   setModalVisible = (visible) => {
@@ -50,19 +59,35 @@ export default class Tab1 extends React.Component {
   }
 
   render() {
+    const {
+      wishList,
+      wishListFetching,
+      wishListError,
+    } = this.props
+
     return (
-      <ScrollView>
+      <ScrollView
+        refreshControl={
+          <RefreshControl
+            refreshing={wishListFetching}
+            onRefresh={this.getWishList}
+          />
+        }>
         <Container>
           <TopWrapper>
             <Title>Wish list</Title>
             <ButtonAdd title={'Add new'} onPress={() => this.setModalVisible(true)} />
           </TopWrapper>
+          <LineError
+            error={wishListError}
+          />
 
           {
-            items.map((item, i) =>
+            wishList && wishList.map((item, i) =>
               <WishlistItem
                 key={i}
-                item={item} />)
+                item={item} />,
+            )
           }
         </Container>
         <WishlistNewModal
