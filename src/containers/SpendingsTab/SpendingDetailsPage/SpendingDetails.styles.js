@@ -7,9 +7,9 @@ export const Container = styled(View)`
 `
 
 export const Name = styled(Text)`
-	font-size: 24px;
+	font-size: 30px;
 	font-weight: 600;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 `
 
 export const TextDefault = styled(Text)`
