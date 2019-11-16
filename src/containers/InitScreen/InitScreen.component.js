@@ -71,7 +71,7 @@ class InitLoading extends PureComponent {
 						}],
 					}}
 				>
-					{`Wish and\nEarn`}
+					{`SpendLess`}
 				</LogoText>
 			</Container>
 		)

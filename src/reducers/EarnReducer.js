@@ -69,7 +69,7 @@ export const spendingsSuccess = (state, action) =>
 	state.merge({
 		spendingsFetching: false,
 		spendingsError: null,
-		spendings: action.spendings,
+		spendings: action.spendings || [],
 		subcategories: action.subcategories,
 	})
 export const spendingsCreateSuccess = (state, action) =>
