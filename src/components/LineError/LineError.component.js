@@ -26,7 +26,7 @@ export default class LineError extends PureComponent {
 				<ErrorText {...this.props}>
 					{extractErrorMessage(err)}
 				</ErrorText>
-			)
+			) || null
 		)
 	}
 }

@@ -5,7 +5,7 @@ import { Text, WishlistItem } from 'components'
 
 import { ButtonAdd, Container, Title, TopWrapper } from './Wishlist.styles'
 import { WishlistNewModal } from './WishlistNewModal'
-import LineError from '../../components/LineError/LineError.component'
+import LineError from 'components/LineError'
 
 let items = [
   {
@@ -81,7 +81,6 @@ export default class Wishlist extends React.Component {
           <LineError
             error={wishListError}
           />
-
           {
             wishList && wishList.map((item, i) =>
               <WishlistItem
