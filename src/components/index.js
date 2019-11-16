@@ -1,5 +1,5 @@
-import InitLoading from './InitScreen'
+import Text from './Text'
 
 export {
-	InitLoading,
+	Text,
 }

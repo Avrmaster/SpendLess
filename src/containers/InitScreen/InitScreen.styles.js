@@ -18,9 +18,10 @@ export const IntroBackground: ImageBackground = styled(ImageBackground)`
 `
 
 export const LogoText: Text = styled(Text)`
-  font-size: 70px;
+  font-size: 60px;
   color: white;
-  margin-bottom: 100%;
+  margin-bottom: 400px;
+  text-align: center;
 `
 
 LogoText.propTypes = { ...Text.propTypes }

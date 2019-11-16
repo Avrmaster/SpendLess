@@ -17,7 +17,7 @@ class InitLoading extends PureComponent {
 		loadingFinished: PropTypes.bool,
 	}
 
-	logoScale = new Animated.Value(0)
+	logoScale = new Animated.Value(0.8)
 
 	componentDidMount() {
 		this.loopAnim = Animated.loop(
@@ -41,7 +41,8 @@ class InitLoading extends PureComponent {
 			toValue: 1,
 			useNativeDriver: true,
 			isInteraction: false,
-			mass: 1.2,
+			mass: 2,
+			stiffness: 50,
 		}).start(() => {
 			this.loopAnim.start()
 			this.props.onAnimationFinished()
@@ -60,7 +61,7 @@ class InitLoading extends PureComponent {
 					hidden
 				/>
 				<IntroBackground
-					source={require('../../images/junctionBackground.jpg')}
+					source={require('../../images/Night.png')}
 				/>
 				<LogoText
 					animated
@@ -70,7 +71,7 @@ class InitLoading extends PureComponent {
 						}],
 					}}
 				>
-					Junction
+					{`Wish and\nEarn`}
 				</LogoText>
 			</Container>
 		)
