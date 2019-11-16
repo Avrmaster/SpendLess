@@ -1,13 +1,15 @@
 import Text from './Text'
-import WishlistItem from './WishlistItem'
-import ChallengeBrief from './ChallengeBrief'
 import ChallengeDetails from './ChallengeDetails'
 import Header from './ChallengeBrief'
+import WishlistItem from './WishlistItem';
+import ChallengeBrief from './ChallengeBrief';
+import Progressbar from './Progressbar';
 
 export {
-	ChallengeBrief,
 	ChallengeDetails,
+  ChallengeBrief,
 	Text,
-	WishlistItem,
 	Header,
-}
+  WishlistItem,
+  Progressbar,
+};
