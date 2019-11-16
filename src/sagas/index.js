@@ -17,6 +17,7 @@ import {
 	getChallenges,
 	applyChallenge,
 	unapplyForChallenge,
+	createWishItem
 } from './EarnSagas'
 
 /* ------------- Connect Types To sagas ------------- */
@@ -32,5 +33,7 @@ export default function* root() {
 
 		takeLatest(EarnTypes.CHALLENGE_APPLY_REQUEST, applyChallenge),
 		takeLatest(EarnTypes.CHALLENGE_UN_APPLY_REQUEST, unapplyForChallenge),
+
+		takeLatest(EarnTypes.WISH_ITEM_CREATE, createWishItem),
 	])
 }

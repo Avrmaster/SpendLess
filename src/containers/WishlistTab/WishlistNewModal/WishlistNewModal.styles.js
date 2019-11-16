@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import { Text } from 'components';
 
-export const ModalWrapper = styled.View`
+export const ModalWrapper = styled.ScrollView`
   padding: 40px 15px 0;  
 `;
 

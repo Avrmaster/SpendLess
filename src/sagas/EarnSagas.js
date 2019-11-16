@@ -49,3 +49,13 @@ export function* getWishList(action) {
 		yield put(EarnActions.wishListFailure(error))
 	}
 }
+
+export function* createWishItem(action) {
+	console.log("action: ", action)
+	try {
+		const wishItem = yield call(Api.createWishItem, action.userId, action.name, action.price, action.photo_url)
+		yield put(EarnActions.wishItemCreateSuccess(wishItem))
+	} catch (error) {
+		yield put(EarnActions.wishListFailure(error))
+	}
+}

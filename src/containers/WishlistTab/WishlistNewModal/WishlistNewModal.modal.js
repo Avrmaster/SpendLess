@@ -1,7 +1,7 @@
 import React from 'react'
 import * as PropTypes from 'prop-types'
 
-import { Modal, View, Button } from 'react-native'
+import { Modal, View, ScrollView, Button } from 'react-native'
 import { TopWrapper } from '../Wishlist.styles'
 import { InputText, InputWrapper, ModalTextInput, ModalWrapper } from './WishlistNewModal.styles'
 
@@ -14,8 +14,11 @@ export default function WishlistNewModal(props) {
       <Modal
         animationType="slide"
         transparent={false}
-        visible={props.modalVisible}>
-        <ModalWrapper>
+        visible={props.modalVisible}
+      >
+        <ModalWrapper
+          keyboardShouldPersistTaps={'handled'}
+        >
           <TopWrapper style={{marginBottom: 15}}>
             <Button title={'Close'} onPress={() => props.hideModal()} />
             <Button title={'Submit'} onPress={() => props.onSubmit(name, price, imageLink)} />
