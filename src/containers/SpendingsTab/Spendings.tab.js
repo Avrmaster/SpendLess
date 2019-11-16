@@ -5,6 +5,9 @@ import { Text } from 'components'
 import Colors from '../../themes/Colors'
 import Header from '../../components/Header'
 import LineError from '../../components/LineError/LineError.component'
+import SpendingItem from '../../components/SpendingItem/SpendingItem.component'
+import EmptyList from '../../components/EmptyList/EmptyList'
+import { AddButton, AddButtonText } from './Spendings.styles'
 
 export default class Spendings extends React.Component {
 	componentDidMount(): void {
@@ -33,6 +36,10 @@ export default class Spendings extends React.Component {
 				<LineError
 					error={spendingsError}
 				/>
+				<EmptyList
+					show={!spendingsFetching && !spendings.length && !spendingsError}
+					text={'Looks like you have not\n added any spendings yet :)\n Click button below to add one'}
+				/>
 
 				<ScrollView
 					style={{
@@ -50,10 +57,16 @@ export default class Spendings extends React.Component {
 						[...spendings]
 							.sort((a, b) => b.id - a.id)
 							.map(item => (
-								<Text>{item.id}</Text>
+								<SpendingItem key={item.id} item={item}/>
 							))
 					}
 				</ScrollView>
+				<AddButton
+					activeOpacity={0.8}
+					onPress={() => {
+				}}>
+					<AddButtonText>Add new</AddButtonText>
+				</AddButton>
 			</View>
 		)
 	}
