@@ -1,6 +1,7 @@
 import { ScrollView, Dimensions } from 'react-native'
 import React from 'react'
 import moment from 'moment'
+import Color from 'color'
 
 import { createBackNavigation } from 'navigation/NavigationStructure'
 import * as PropTypes from 'prop-types'
@@ -27,24 +28,32 @@ export default class SpendingDetailsPage extends React.Component {
 
 	render() {
 		const barData = {
-			labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+			labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
 			datasets: [
 				{
 					data: [20, 45, 28, 80, 99, 43],
+					strokeWidth: 2, // optional
 				},
 			],
 		}
 
+		const primaryColor = this.state.item.sub_category.category.color
+		const colorBg = Color(primaryColor).darken(0.5).string()
+
 		const chartConfig = {
-			backgroundColor: '#e26a00',
-			backgroundGradientFrom: '#fb8c00',
-			backgroundGradientTo: '#ffa726',
-			decimalPlaces: 2, // optional, defaults to 2dp
-			color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-			style: {
-				borderRadius: 16,
-			},
+			backgroundColor: colorBg,
+			backgroundGradientFrom: colorBg,
+			backgroundGradientTo: colorBg,
+			decimalPlaces: 0, // optional, defaults to 2dp
+			color: (opacity = 1) => Color(primaryColor).lighten(opacity * 1.5).string(),
 		}
+
+		const graphStyle = {
+			marginVertical: 15,
+		}
+
+		const graphWidth = Dimensions.get('window').width
+		const height = 220
 
 		return (
 			<ScrollView
@@ -73,17 +82,25 @@ export default class SpendingDetailsPage extends React.Component {
 						<TextBold>Price: </TextBold>
 						<TextDefault>${this.state.item.price}</TextDefault>
 					</Row>
-
-					<BarChart
-						// style={graphStyle}
-						data={barData}
-						width={'100%'}
-						height={220}
-						yAxisLabel={'$'}
-						chartConfig={chartConfig}
-					/>
-
 				</Container>
+				<BarChart
+					style={graphStyle}
+					data={barData}
+					width={graphWidth}
+					height={height}
+					yAxisLabel={'$'}
+					chartConfig={chartConfig}
+				/>
+
+				<LineChart
+					data={barData}
+					width={graphWidth}
+					height={height}
+					yAxisLabel={'$'}
+					chartConfig={chartConfig}
+					bezier
+					style={graphStyle}
+				/>
 			</ScrollView>
 		)
 	}
