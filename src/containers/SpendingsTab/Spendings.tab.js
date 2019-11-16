@@ -58,7 +58,7 @@ export default class Spendings extends React.Component {
 						[...spendings]
 							.sort((a, b) => b.id - a.id)
 							.map(item => (
-								<SpendingItem key={item.id} item={item}/>
+								<SpendingItem key={item.id} item={item} />
 							))
 					}
 				</ScrollView>

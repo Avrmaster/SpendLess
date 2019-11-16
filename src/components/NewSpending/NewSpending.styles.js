@@ -5,7 +5,7 @@ import Text from 'components/Text'
 import Colors from '../../themes/Colors'
 
 export const Container = styled.KeyboardAvoidingView`
-	width: 100%;
+	width: 93%;
 	padding: 20px 40px;
 	background-color: white;
 	border-radius: 6px;
