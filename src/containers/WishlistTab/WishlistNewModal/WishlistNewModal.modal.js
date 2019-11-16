@@ -1,8 +1,8 @@
 import React from 'react'
 import * as PropTypes from 'prop-types'
 
-import { Modal, View } from 'react-native'
-import { ButtonAdd, TopWrapper } from '../Wishlist.styles'
+import { Modal, View, Button } from 'react-native'
+import { TopWrapper } from '../Wishlist.styles'
 import { InputText, InputWrapper, ModalTextInput, ModalWrapper } from './WishlistNewModal.styles'
 
 export default function WishlistNewModal(props) {
@@ -17,8 +17,8 @@ export default function WishlistNewModal(props) {
         visible={props.modalVisible}>
         <ModalWrapper>
           <TopWrapper style={{marginBottom: 15}}>
-            <ButtonAdd title={'Close'} onPress={() => props.hideModal()} />
-            <ButtonAdd title={'Submit'} onPress={() => props.onSubmit(name, price, imageLink)} />
+            <Button title={'Close'} onPress={() => props.hideModal()} />
+            <Button title={'Submit'} onPress={() => props.onSubmit(name, price, imageLink)} />
           </TopWrapper>
 
           <InputWrapper>

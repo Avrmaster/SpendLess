@@ -1,25 +1,23 @@
 import React, { PureComponent } from 'react'
 import * as PropTypes from 'prop-types'
 import { ContentWrapper, ItemImage, ItemName, ItemPrice, Wrapper, ProgressbarStyled } from './WishlistItem.styles'
-import { Image as ImageNative } from 'react-native'
 
-class WishlistItem extends PureComponent {
+export default class WishlistItem extends PureComponent {
   static propTypes = {
     item: PropTypes.object.isRequired,
   }
 
   render() {
+    const {name, price, photo_url} = this.props.item
     return (
       <Wrapper activeOpacity={0.8}>
-        <ItemImage source={this.props.item.image} />
-        <ProgressbarStyled progress={this.props.item.progress} />
+        <ItemImage source={{uri: photo_url}} />
+        <ProgressbarStyled progress={0} />
         <ContentWrapper>
-          <ItemName>{this.props.item.title}</ItemName>
-          <ItemPrice>${this.props.item.price}</ItemPrice>
+          <ItemName>{name}</ItemName>
+          <ItemPrice>${price}</ItemPrice>
         </ContentWrapper>
       </Wrapper>
     )
   }
 }
-
-export default WishlistItem
