@@ -12,3 +12,11 @@ export function* getChallenges(action, api: ApiClient) {
 		yield put(EarnActions.challengesFailure(error))
 	}
 }
+
+export function* applyChallenge(action, api: ApiClient) {
+
+}
+
+export function* unapplyForChallenge(action, api: ApiClient) {
+
+}

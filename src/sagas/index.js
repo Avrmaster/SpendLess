@@ -3,7 +3,7 @@ import React from 'react'
 
 /* ------------- Types ------------- */
 import { NavigationTypes } from '../reducers/NavigationReducer'
-import { EarnTypes } from '../reducers/EarnReducer'
+import { challengesRequest, EarnTypes } from '../reducers/EarnReducer'
 
 /* ------------- Sagas ------------- */
 import {
@@ -13,6 +13,8 @@ import {
 } from './NavigationSagas'
 import {
 	getChallenges,
+	applyChallenge,
+	unapplyForChallenge,
 } from './EarnSagas'
 
 /* ------------- API ------------- */
@@ -28,5 +30,7 @@ export default function* root() {
 		takeLatest(NavigationTypes.AUTO_NAVIGATION_REQUEST, profileAutoNavigationRequest),
 
 		takeLatest(EarnTypes.CHALLENGES_REQUEST, getChallenges, client),
+		takeLatest(EarnTypes.CHALLENGE_APPLY_REQUEST, applyChallenge, client),
+		takeLatest(EarnTypes.CHALLENGE_UN_APPLY_REQUEST, unapplyForChallenge, client),
 	])
 }
