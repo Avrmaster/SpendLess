@@ -71,7 +71,7 @@ export default class NewSpending extends React.Component {
 								!this.state.selectedCategory?.id ||
 								!this.state.name
 							) {
-								alert("Field required fields!")
+								alert("Fill required fields!")
 								return
 							}
 

@@ -9,6 +9,9 @@ import SpendingItem from '../../components/SpendingItem/SpendingItem.component'
 import EmptyList from '../../components/EmptyList/EmptyList'
 import { AddButton, AddButtonText } from './Spendings.styles'
 
+import { popupRef } from '../App/RootContainer'
+import NewSpending from '../../components/NewSpending/NewSpending.component'
+
 export default class Spendings extends React.Component {
 	componentDidMount(): void {
 		this.getSpendings()
@@ -57,14 +60,23 @@ export default class Spendings extends React.Component {
 						[...spendings]
 							.sort((a, b) => b.id - a.id)
 							.map(item => (
-								<SpendingItem key={item.id} item={item}/>
+								<SpendingItem key={item.id} item={item} />
 							))
 					}
 				</ScrollView>
 				<AddButton
 					activeOpacity={0.8}
 					onPress={() => {
-				}}>
+						popupRef.ref.set(
+							<NewSpending
+								user={{ id: 2 }}
+								subcategories={[]}
+								onAdd={newSpending => {
+
+								}}
+							/>,
+						)
+					}}>
 					<AddButtonText>Add new</AddButtonText>
 				</AddButton>
 			</View>
