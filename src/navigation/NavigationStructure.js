@@ -20,7 +20,7 @@ import {
 
 export default createBottomTabNavigator(
 	{
-		Spendings: withBarStyleListener(SpendingsTab, 'dark-content'),
+		Spendings: withBarStyleListener(SpendingsTab, 'light-content'),
 		Challenges: (
 			createStackNavigator(
 				{
