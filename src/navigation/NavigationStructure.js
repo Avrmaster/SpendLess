@@ -16,11 +16,24 @@ import {
 	ChallengeDetailsPage,
 	WishlistTab,
 	AccountTab,
+	SpendingDetailsPage
 } from 'containers'
 
 export default createBottomTabNavigator(
 	{
-		Spendings: withBarStyleListener(SpendingsTab, 'light-content'),
+		Spendings: (
+			createStackNavigator(
+				{
+					tab: withBarStyleListener(SpendingsTab, 'light-content'),
+					details: withBarStyleListener(SpendingDetailsPage, 'light-content'),
+				},
+				{
+					initialRouteName: 'tab',
+					mode: 'modal',
+					headerMode: 'none',
+				},
+			)
+		),
 		Challenges: (
 			createStackNavigator(
 				{

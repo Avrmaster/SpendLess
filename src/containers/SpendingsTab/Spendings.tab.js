@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { RefreshControl, ScrollView, View } from 'react-native'
-import { Text } from 'components'
 import Colors from '../../themes/Colors'
 import Header from '../../components/Header'
 import LineError from '../../components/LineError/LineError.component'
@@ -10,8 +9,11 @@ import EmptyList from '../../components/EmptyList/EmptyList'
 import { AddButton, AddButtonText } from './Spendings.styles'
 import { popupRef } from '../App/RootContainer'
 import NewSpending from '../../components/NewSpending/NewSpending.component'
+import { createNavigation } from '../../navigation/NavigationStructure'
 
 export default class Spendings extends React.Component {
+	toDetails = createNavigation(this, 'details')
+
 	componentDidMount(): void {
 		this.getSpendings()
 	}
@@ -57,8 +59,11 @@ export default class Spendings extends React.Component {
 					{
 						[...spendings]
 							.sort((a, b) => b.id - a.id)
-							.map(item => (
-								<SpendingItem key={item.id} item={item} />
+							.map(spendingItem => (
+								<SpendingItem
+									key={spendingItem.id}
+									item={spendingItem}
+									onPress={() => this.toDetails({ spendingItem })}/>
 							))
 					}
 				</ScrollView>

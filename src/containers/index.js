@@ -1,4 +1,5 @@
 import SpendingsTab from './SpendingsTab'
+import SpendingDetailsPage from './SpendingsTab/SpendingDetailsPage'
 import ChallengesTab from './ChallengesTab'
 import ChallengeDetailsPage from './ChallengesTab/ChallengeDetailsPage'
 import WishlistTab from './WishlistTab'
@@ -11,5 +12,6 @@ export {
 	WishlistTab,
 	AccountTab,
 	ChallengeDetailsPage,
-	WishItemDetailsPage
+	WishItemDetailsPage,
+	SpendingDetailsPage
 }
