@@ -20,7 +20,7 @@ import {
 export default class ChallengeBrief extends React.Component {
 
 	state = {
-		selectedWishItem: null,
+		selectedWishItem: this.props.challenge.wishlist?.[0],
 	}
 
 	render() {
