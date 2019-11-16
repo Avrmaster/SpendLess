@@ -19,10 +19,10 @@ let items = [
     image: require('../../../assets/images/t-shit.png'),
   },
   {
-    title: 'IPhone',
-    price: 1100,
-    progress: 0.67,
-    image: require('../../../assets/images/iphone.jpg'),
+    title: 'Iqos',
+    price: 100,
+    progress: 1,
+    image: require('../../../assets/images/iqos.png'),
   },
   {
     title: 'T-Shit',

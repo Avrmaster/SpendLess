@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import {
   View
 } from 'react-native';
-import { Text } from 'components';
+import { Text, Progressbar } from 'components';
 
 export const Container = styled(View)`
   margin-top: 30px;
