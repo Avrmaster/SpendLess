@@ -11,6 +11,7 @@ import {
 	Price,
 	Category,
 	AppliedStar,
+	AppliedText,
 } from './ChallengeBrief.styles'
 import {
 	formatPrice,
@@ -36,8 +37,8 @@ export default class ChallengeBrief extends React.Component {
 			>
 				<Row>
 					{
-						applied && <AppliedStar
-							source={require('../../images/Star.png')}
+						applied && <AppliedText
+							children={'Applied'}
 						/>
 					}
 					<ChallengeImage

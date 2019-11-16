@@ -13,6 +13,24 @@ export function* getChallenges(action) {
 	}
 }
 
+export function* applyChallenge(action) {
+	try {
+		const aChallenge = yield call(Api.applyChallenge, action.userId, action.challengeId)
+		yield put(EarnActions.challengeUpdateSuccess(aChallenge))
+	} catch (error) {
+		yield put(EarnActions.challengesFailure(error))
+	}
+}
+
+export function* unapplyForChallenge(action) {
+	try {
+		const aChallenge = yield call(Api.unappplyChallenge, action.userId, action.challengeId)
+		yield put(EarnActions.challengeUpdateSuccess(aChallenge))
+	} catch (error) {
+		yield put(EarnActions.challengesFailure(error))
+	}
+}
+
 export function* getSpendings(action) {
 	try {
 		const spendings = yield call(Api.getSpendings, action.userId)
@@ -30,12 +48,4 @@ export function* getWishList(action) {
 	} catch (error) {
 		yield put(EarnActions.wishListFailure(error))
 	}
-}
-
-export function* applyChallenge(action, api: ApiClient) {
-
-}
-
-export function* unapplyForChallenge(action, api: ApiClient) {
-
 }
