@@ -33,7 +33,7 @@ export default createBottomTabNavigator(
 		Account: withBarStyleListener(AccountTab, 'dark-content'),
 	}, {
 		lazy: false,
-		order: ['Spendings', 'Challenges', 'Wishlist', 'Account'],
+		order: ['Challenges', 'Spendings', 'Wishlist', 'Account'],
 	},
 )
 
