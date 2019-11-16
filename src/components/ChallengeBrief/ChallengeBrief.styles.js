@@ -1,5 +1,6 @@
 import styled from 'styled-components/native'
 import Text from 'components/Text'
+import Colors from '../../themes/Colors'
 
 export const Container = styled.TouchableOpacity`
 	background-color: white;
@@ -71,4 +72,16 @@ export const AppliedStar = styled.Image`
 	z-index: 1000;
 	background-color: aliceblue;
 	border-radius: 15px;
+`
+
+export const AppliedText = styled(Text)`
+	position: absolute;
+	top: -15px;
+	left: -20px;
+	padding: 10px;
+	z-index: 1000;
+	color: chartreuse;
+	font-weight: 900;
+	font-size: 30px;
+	transform: rotate(-10deg);
 `

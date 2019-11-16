@@ -78,6 +78,7 @@ export const challengesRequest = (state) =>
 	state.merge({
 		challengesFetching: true,
 	})
+
 export const wishListRequest = (state, action) =>
 	state.merge({
 		wishListFetching: true,
@@ -134,7 +135,11 @@ export const wishListFailure = (state, action) =>
 export const reducer = createReducer(INITIAL_STATE, {
 	[Types.LOGIN_REQUEST]: loginRequest,
 	[Types.SPENDINGS_REQUEST]: spendingsRequest,
+
 	[Types.CHALLENGES_REQUEST]: challengesRequest,
+	[Types.CHALLENGE_APPLY_REQUEST]: challengesRequest,
+	[Types.CHALLENGE_UN_APPLY_REQUEST]: challengesRequest,
+
 	[Types.WISH_LIST_REQUEST]: wishListRequest,
 
 	[Types.CHALLENGE_APPLY_REQUEST]: challengesRequest,

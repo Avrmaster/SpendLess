@@ -1,10 +1,10 @@
 import React from 'react'
 
 import { RefreshControl, ScrollView, TouchableOpacity } from 'react-native'
-import { Text, WishlistItem } from 'components'
+import { WishlistItem } from 'components'
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome'
 
-import { ButtonAdd, Container, Title, TopWrapper } from './Wishlist.styles'
+import { Container } from './Wishlist.styles'
 import { WishlistNewModal } from './WishlistNewModal'
 import LineError from 'components/LineError'
 import Colors from '../../themes/Colors'
@@ -13,35 +13,35 @@ import { View } from 'react-native'
 
 
 export default class Wishlist extends React.Component {
-  state = {
-    modalVisible: false,
-  }
+	state = {
+		modalVisible: false,
+	}
 
-  componentDidMount(): void {
-    this.getWishList()
-  }
+	componentDidMount(): void {
+		this.getWishList()
+	}
 
-  getWishList = () => {
-    this.props.getWishList(this.props.user.id)
-  }
+	getWishList = () => {
+		this.props.getWishList(this.props.user.id)
+	}
 
-  setModalVisible = (visible) => {
-    this.setState({modalVisible: visible})
-  }
+	setModalVisible = (visible) => {
+		this.setState({ modalVisible: visible })
+	}
 
-  addNewWishItem = (name, price, imageLink) => {
-    console.log(name)
-    console.log(price)
-    console.log(imageLink)
-    this.setModalVisible(false)
-  }
+	addNewWishItem = (name, price, imageLink) => {
+		console.log(name)
+		console.log(price)
+		console.log(imageLink)
+		this.setModalVisible(false)
+	}
 
-  render() {
-    const {
-      wishList,
-      wishListFetching,
-      wishListError,
-    } = this.props
+	render() {
+		const {
+			wishList,
+			wishListFetching,
+			wishListError,
+		} = this.props
 
     return (
       <View style={{flex: 1, backgroundColor: Colors.background}}>

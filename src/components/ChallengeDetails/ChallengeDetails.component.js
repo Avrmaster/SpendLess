@@ -28,14 +28,15 @@ export default class ChallengeBrief extends React.Component {
 
 		return (
 			<Container
+				key={Math.random()}
 				underline={sub_category.category.color}
 			>
-				<Difficulty
-					children={difficulty}
-				/>
 				<Name>
 					{name}
 				</Name>
+				<Difficulty
+					children={difficulty}
+				/>
 				<Description
 					children={full_description}
 				/>
@@ -46,9 +47,9 @@ export default class ChallengeBrief extends React.Component {
 				</Row>
 				<ApplyButton onPress={() => {
 					if (applied) {
-						this.props.onApply()
-					} else {
 						this.props.onUnapply()
+					} else {
+						this.props.onApply()
 					}
 				}}>
 					<ApplyText>
