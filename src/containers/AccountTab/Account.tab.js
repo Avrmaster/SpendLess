@@ -48,7 +48,7 @@ export default class Tab1 extends React.Component {
 								this.props.login(itemValue)
 							}>
 							{[1, 2, 3, 4, 5]
-								.map((id) => (<Picker.Item label={`User ${id}`} value={id}/>))}
+								.map((id) => (<Picker.Item key={id} label={`User ${id}`} value={id}/>))}
 						</Picker>
 					</Row>
 					<FeaturedText>

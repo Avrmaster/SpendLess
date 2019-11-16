@@ -51,7 +51,8 @@ export default class ChallengesTab extends React.Component {
 					}
 				>
 					{
-						challenges
+						[...challenges]
+							.sort((a, b) => b.id - a.id)
 							.map(challenge => (
 								<ChallengeBrief
 									key={challenge.id}

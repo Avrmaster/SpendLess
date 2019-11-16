@@ -10,12 +10,19 @@ import {
 	Price,
 	ApplyButton,
 	ApplyText,
+	WishPicker,
+	EarningText,
 } from './ChallengeDetails.styles'
 import {
 	formatPrice,
 } from 'helpers'
 
 export default class ChallengeBrief extends React.Component {
+
+	state = {
+		selectedWishItem: null,
+	}
+
 	render() {
 		const {
 			applied,
@@ -25,13 +32,15 @@ export default class ChallengeBrief extends React.Component {
 			earn_amount,
 			sub_category,
 		} = this.props.challenge
+		const {
+			wishlist,
+		} = this.props
 
 		return (
 			<Container
-				key={Math.random()}
 				underline={sub_category.category.color}
 			>
-				<Name>
+				<Name key={Math.random()}>
 					{name}
 				</Name>
 				<Difficulty
@@ -41,13 +50,57 @@ export default class ChallengeBrief extends React.Component {
 					children={full_description}
 				/>
 				<Price
-					children={'+' + formatPrice(earn_amount)}
+					style={{
+						fontSize: 20,
+						marginBottom: 0,
+					}}
+					children={'Potential earn:'}
 				/>
+				<Price
+					style={{
+						marginTop: 0,
+					}}
+					children={formatPrice(earn_amount)}
+				/>
+				<Row>
+					<EarningText>
+						{
+							this.state.selectedWishItem
+								? (Math.min(
+								100 * earn_amount / this.state.selectedWishItem?.price || 0, 100,
+								)).toFixed(1)
+								: '-- '
+						}%
+					</EarningText>
+					<WishPicker
+						selectedValue={this.state.selectedWishItem?.id}
+						onValueChange={(selectedWishItem, selectedIndex) => {
+							this.setState({ selectedWishItem: wishlist[selectedIndex - 1] })
+						}}
+					>
+						<WishPicker.Item
+							label={`Nothing`}
+							value={0}
+						/>
+						{
+							wishlist
+								.map(
+									wishItem => (
+										<WishPicker.Item
+											key={wishItem.id}
+											label={`${wishItem.name}`}
+											value={wishItem.id}
+										/>
+									),
+								)
+						}
+					</WishPicker>
+				</Row>
 				<ApplyButton onPress={() => {
 					if (applied) {
 						this.props.onUnapply()
 					} else {
-						this.props.onApply()
+						this.props.onApply(this.state.selectedWishItem?.id)
 					}
 				}}>
 					<ApplyText>
@@ -80,6 +133,11 @@ ChallengeBrief.propTypes = {
 			}),
 		}),
 	}).isRequired,
+	wishlist: PropTypes.arrayOf(PropTypes.shape({
+		id: PropTypes.number.isRequired,
+		name: PropTypes.string.isRequired,
+		price: PropTypes.number.isRequired,
+	})).isRequired,
 	onApply: PropTypes.func.isRequired,
 	onUnapply: PropTypes.func.isRequired,
 }
