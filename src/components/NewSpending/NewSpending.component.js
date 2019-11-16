@@ -49,6 +49,7 @@ export default class NewSpending extends React.Component {
 								.map(
 									category => (
 										<CategoryPicker.Item
+											color={category.category.color}
 											key={category.id}
 											label={`${category.name}`}
 											value={category.id}
@@ -71,12 +72,13 @@ export default class NewSpending extends React.Component {
 								!this.state.selectedCategory?.id ||
 								!this.state.name
 							) {
-								alert("Field required fields!")
+								alert('Field required fields!')
 								return
 							}
 
 							this.props.onAdd({
-								...this.state,
+								name: this.state.name,
+								price: this.state.price,
 								amount: 1,
 								date: new Date().toISOString(),
 								sub_category_fk: this.state.selectedCategory?.id,

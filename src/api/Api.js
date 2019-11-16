@@ -13,6 +13,7 @@ export const unappplyChallenge = (userId, challengeId) => clientApi.app_challeng
 })
 export const getWishList = userId => clientApi.app_wishlist_get_all({ fromUser: { id: userId } })
 export const getSpendings = userId => clientApi.app_items_get_all({ fromUser: { id: userId } })
+export const getSubcategories = () => clientApi.app_subcategories_get_all({})
 
 export const createWishItem = (userId, name, price, photo_url) =>
 	clientApi.app_wishlist_create({
@@ -24,3 +25,6 @@ export const createWishItem = (userId, name, price, photo_url) =>
 			amount: 1,
 		},
 	})
+
+export const createSpendItem = (item) =>
+	clientApi.app_items_create({ item })

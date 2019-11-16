@@ -4,29 +4,28 @@ import Immutable from 'seamless-immutable'
 /* ------------- Types and Action Creators ------------- */
 const { Types, Creators } = createActions({
 	loginRequest: ['userId'],
+
 	spendingsRequest: ['userId'],
-	challengesRequest: ['userId'],
-	wishListRequest: ['userId'],
-
-	challengeApplyRequest: ['userId', 'challengeId', 'wishId'],
-	wishListApplyRequest: ['userId', 'wishItemId'],
-
-	challengeUnApplyRequest: ['userId', 'challengeId'],
-	wishListUnApplyRequest: ['userId', 'wishItemId'],
-
-	spendingsSuccess: ['spendings'],
-	challengesSuccess: ['challenges'],
-	wishListSuccess: ['wishList'],
-
-	challengeUpdateSuccess: ['challenge'],
-	wishItemUpdateSuccess: ['wishItem'],
-
+	spendingsSuccess: ['spendings', 'subcategories'],
 	spendingsFailure: ['error'],
-	challengesFailure: ['error'],
-	wishListFailure: ['error'],
+	spendingItemCreate: ['spendingItem'],
+	spendingItemCreateSuccess: ['newSpendingItem'],
 
+	wishListRequest: ['userId'],
+	wishListApplyRequest: ['userId', 'wishItemId'],
+	wishListUnApplyRequest: ['userId', 'wishItemId'],
+	wishItemUpdateSuccess: ['wishItem'],
+	wishListSuccess: ['wishList'],
 	wishItemCreate: ['userId', 'name', 'price', 'photo_url'],
 	wishItemCreateSuccess: ['newWithItem'],
+	wishListFailure: ['error'],
+
+	challengesRequest: ['userId'],
+	challengeApplyRequest: ['userId', 'challengeId', 'wishId'],
+	challengeUnApplyRequest: ['userId', 'challengeId'],
+	challengesSuccess: ['challenges'],
+	challengeUpdateSuccess: ['challenge'],
+	challengesFailure: ['error'],
 })
 
 export const EarnTypes = Types
@@ -38,6 +37,7 @@ export const INITIAL_STATE = Immutable({
 		id: 2,
 	},
 
+	subcategories: [],
 	spendings: [],
 	challenges: [],
 
@@ -70,6 +70,13 @@ export const spendingsSuccess = (state, action) =>
 		spendingsFetching: false,
 		spendingsError: null,
 		spendings: action.spendings,
+		subcategories: action.subcategories,
+	})
+export const spendingsCreateSuccess = (state, action) =>
+	state.merge({
+		spendingsFetching: false,
+		spendingsError: null,
+		spendings: [...action.spendings, ...(action.newSpendingItem ? [action.newSpendingItem] : [])],
 	})
 export const spendingsFailure = (state, action) =>
 	state.merge({
@@ -142,8 +149,13 @@ export const wishItemCreateSuccess = (state, action) =>
 	})
 
 export const reducer = createReducer(INITIAL_STATE, {
-	[Types.LOGIN_REQUEST]: loginRequest,
+	[Types.SPENDING_ITEM_CREATE]: spendingsRequest,
+	[Types.SPENDING_ITEM_CREATE_SUCCESS]: spendingsCreateSuccess,
 	[Types.SPENDINGS_REQUEST]: spendingsRequest,
+	[Types.SPENDINGS_SUCCESS]: spendingsSuccess,
+	[Types.SPENDINGS_FAILURE]: spendingsFailure,
+
+	[Types.LOGIN_REQUEST]: loginRequest,
 
 	[Types.CHALLENGES_REQUEST]: challengesRequest,
 	[Types.CHALLENGE_APPLY_REQUEST]: challengesRequest,
@@ -157,14 +169,12 @@ export const reducer = createReducer(INITIAL_STATE, {
 	[Types.CHALLENGE_UN_APPLY_REQUEST]: challengesRequest,
 	[Types.WISH_LIST_UN_APPLY_REQUEST]: wishListRequest,
 
-	[Types.SPENDINGS_SUCCESS]: spendingsSuccess,
 	[Types.CHALLENGES_SUCCESS]: challengesSuccess,
 	[Types.WISH_LIST_SUCCESS]: wishListSuccess,
 
 	[Types.CHALLENGE_UPDATE_SUCCESS]: challengesUpdateSuccess,
 	[Types.WISH_ITEM_UPDATE_SUCCESS]: wishItemUpdateSuccess,
 
-	[Types.SPENDINGS_FAILURE]: spendingsFailure,
 	[Types.CHALLENGES_FAILURE]: challengesFailure,
 	[Types.WISH_LIST_FAILURE]: wishListFailure,
 
