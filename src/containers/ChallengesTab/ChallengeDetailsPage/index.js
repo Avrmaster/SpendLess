@@ -22,7 +22,7 @@ function mapDispatchToPress(dispatch) {
 export default connect(mapStateToProps, mapDispatchToPress)(
 	withCollapsibleHeader(
 		ChallengeDetails,
-		(props) => <ImageHeader source={{ uri: props.navigation.getParam('challenge').imageUrl }}/>,
+		(props) => <ImageHeader source={{ uri: props.navigation.getParam('challenge').photo_url }}/>,
 		StaticHeader,
 		ImageHeaderMinHeight,
 		ImageHeaderMaxHeight,

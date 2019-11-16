@@ -18,7 +18,7 @@ export default class ChallengeBrief extends React.Component {
 	render() {
 		const {
 			name,
-			imageUrl,
+			photo_url,
 			brief_description,
 			difficulty,
 			earn_amount,
@@ -31,7 +31,7 @@ export default class ChallengeBrief extends React.Component {
 			>
 				<Row>
 					<ChallengeImage
-						source={{ uri: imageUrl }}
+						source={{ uri: photo_url }}
 					/>
 					<Name
 						children={name}
@@ -57,7 +57,7 @@ ChallengeBrief.propTypes = {
 	onPress: PropTypes.func.isRequired,
 	challenge: PropTypes.shape({
 		name: PropTypes.string,
-		imageUrl: PropTypes.string,
+		photo_url: PropTypes.string,
 		brief_description: PropTypes.string,
 		full_description: PropTypes.string,
 		difficulty: PropTypes.string,
