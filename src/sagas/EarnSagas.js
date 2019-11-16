@@ -34,12 +34,12 @@ export function* unapplyForChallenge(action) {
 export function* getSpendings(action) {
 	try {
 		const spendings = yield call(Api.getSpendings, action.userId)
-		yield put(EarnActions.spendingsSuccess(spendings))
+		const subcategories = yield call(Api.getSubcategories, action.userId)
+		yield put(EarnActions.spendingsSuccess(spendings, subcategories))
 	} catch (error) {
 		yield put(EarnActions.spendingsFailure(error))
 	}
 }
-
 
 export function* getWishList(action) {
 	try {
@@ -51,11 +51,19 @@ export function* getWishList(action) {
 }
 
 export function* createWishItem(action) {
-	console.log("action: ", action)
 	try {
 		const wishItem = yield call(Api.createWishItem, action.userId, action.name, action.price, action.photo_url)
 		yield put(EarnActions.wishItemCreateSuccess(wishItem))
 	} catch (error) {
 		yield put(EarnActions.wishListFailure(error))
+	}
+}
+
+export function* createSpendingItem(action) {
+	try {
+		const item = yield call(Api.createSpendItem, action.spendingItem)
+		yield put(EarnActions.spendingItemCreateSuccess(item))
+	} catch (error) {
+		yield put(EarnActions.spendingsFailure(error))
 	}
 }
