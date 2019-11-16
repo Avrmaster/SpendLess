@@ -8,10 +8,10 @@ import { Text } from 'components';
 import Progressbar from 'components/Progressbar';
 
 export const Wrapper = styled(TouchableOpacity)`
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   background: rgb(255,255,255);
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(163,163,163,0.5);
+  border-radius: 5px;
   width: 100%;
 `;
 
@@ -20,8 +20,8 @@ export const ItemImage = styled(Image)`
   height: auto;
   aspectRatio: 1.75;
   resizeMode: contain;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 `;
 
 export const ContentWrapper = styled(View)`

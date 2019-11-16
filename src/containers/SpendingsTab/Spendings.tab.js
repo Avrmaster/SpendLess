@@ -60,6 +60,20 @@ export default class Spendings extends React.Component {
 								<SpendingItem key={item.id} item={item}/>
 							))
 					}
+					{
+						[...spendings]
+							.sort((a, b) => b.id - a.id)
+							.map(item => (
+								<SpendingItem key={item.id} item={item}/>
+							))
+					}
+					{
+						[...spendings]
+							.sort((a, b) => b.id - a.id)
+							.map(item => (
+								<SpendingItem key={item.id} item={item}/>
+							))
+					}
 				</ScrollView>
 				<AddButton
 					activeOpacity={0.8}

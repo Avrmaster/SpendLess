@@ -7,11 +7,7 @@ export const Wrapper = styled.TouchableOpacity`
 	margin-bottom: 10px;
 	border-bottom-width: 3px;
 	border-bottom-color: ${({ underline }) => underline};
-	shadow-color: #a3a3a3;
-	shadow-offset: 0px 5px;
-	shadow-opacity: 0.5;
-	shadow-radius: 10;
-	elevation: 1px;
+	box-shadow: 0 5px 10px rgba(163,163,163,0.5);
 	flex-direction: row;
 	width: 100%;
 	justify-content: space-between;
