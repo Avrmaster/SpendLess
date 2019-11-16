@@ -10,6 +10,7 @@ import LineError from 'components/LineError'
 import Colors from '../../themes/Colors'
 import Header from '../../components/Header'
 import { View } from 'react-native'
+import EmptyList from '../../components/EmptyList/EmptyList'
 
 
 export default class Wishlist extends React.Component {
@@ -57,6 +58,10 @@ export default class Wishlist extends React.Component {
               name={'plus'}
             />
           </TouchableOpacity>}
+        />
+        <EmptyList
+          show={!wishListFetching && !wishList.length && !wishListError}
+          text={'There is nothing in your Wish list yet. \nClick "+" icon to create new'}
         />
         <ScrollView
           refreshControl={
