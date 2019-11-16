@@ -2,6 +2,7 @@ import { View, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 import { createNavigation } from 'navigation/NavigationStructure'
+import ChallengeBrief from 'components/ChallengeBrief'
 import { Text } from 'components'
 
 export default class Tab1 extends React.Component {
@@ -12,16 +13,21 @@ export default class Tab1 extends React.Component {
 			<View
 				style={{
 					flex: 1,
-					justifyContent: 'center',
-					alignItems: 'center',
-					backgroundColor: '#00BFFF',
+					paddingTop: 100,
+					justifyContent: 'flex-start',
+					backgroundColor: '#EEEEEE',
 				}}
 			>
-				<TouchableOpacity onPress={this.toDetails}>
-					<Text>
-						Challenges (press)
-					</Text>
-				</TouchableOpacity>
+				<ChallengeBrief
+					challenge={{
+						imageUrl: 'https://cdn-image.foodandwine.com/sites/default/files/1568907144/Coffee-National-Coffee-Day-FT-Blog0919.jpg',
+						name: 'Less Coffee',
+						briefDescription: 'Drink less coffee this week',
+						fullDescription: 'Try to minimize your expenses by drinking one cup less coffee this week',
+						difficulty: 'Easy',
+						price: 1000,
+					}}
+				/>
 			</View>
 		)
 	}
