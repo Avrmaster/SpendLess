@@ -4,9 +4,9 @@ import { connect } from 'react-redux'
 import EarnActions from 'reducers/EarnReducer'
 
 function mapStateToProps(state) {
-	console.log('state', state)
 
 	return {
+		user: state.earn.user,
 		// challenges: [
 		// 	{
 		// 		id: 1,

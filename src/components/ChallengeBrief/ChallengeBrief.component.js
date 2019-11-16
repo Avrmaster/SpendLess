@@ -1,4 +1,3 @@
-import {} from 'react-native'
 import * as PropTypes from 'prop-types'
 import React from 'react'
 
@@ -20,9 +19,9 @@ export default class ChallengeBrief extends React.Component {
 		const {
 			name,
 			imageUrl,
-			briefDescription,
+			brief_description,
 			difficulty,
-			price,
+			earn_amount,
 		} = this.props.challenge
 
 		return (
@@ -39,14 +38,14 @@ export default class ChallengeBrief extends React.Component {
 					/>
 				</Row>
 				<BriefDescription
-					children={briefDescription}
+					children={brief_description}
 				/>
 				<Row>
 					<Difficulty
 						children={difficulty}
 					/>
 					<Price
-						children={formatPrice(price)}
+						children={formatPrice(earn_amount)}
 					/>
 				</Row>
 			</Container>
@@ -59,9 +58,9 @@ ChallengeBrief.propTypes = {
 	challenge: PropTypes.shape({
 		name: PropTypes.string,
 		imageUrl: PropTypes.string,
-		briefDescription: PropTypes.string,
-		fullDescription: PropTypes.string,
+		brief_description: PropTypes.string,
+		full_description: PropTypes.string,
 		difficulty: PropTypes.string,
-		price: PropTypes.number,
+		earn_amount: PropTypes.number,
 	}).isRequired,
 }

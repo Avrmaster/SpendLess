@@ -20,9 +20,9 @@ export default class ChallengeBrief extends React.Component {
 	render() {
 		const {
 			name,
-			fullDescription,
+			full_description,
 			difficulty,
-			price,
+			earn_amount,
 		} = this.props.challenge
 
 		return (
@@ -34,11 +34,11 @@ export default class ChallengeBrief extends React.Component {
 					children={difficulty}
 				/>
 				<Description
-					children={fullDescription}
+					children={full_description}
 				/>
 				<Row>
 					<Price
-						children={'+' + formatPrice(price)}
+						children={'+' + formatPrice(earn_amount)}
 					/>
 				</Row>
 				<ApplyButton onPress={() => {
@@ -57,10 +57,10 @@ ChallengeBrief.propTypes = {
 	challenge: PropTypes.shape({
 		name: PropTypes.string,
 		imageUrl: PropTypes.string,
-		briefDescription: PropTypes.string,
-		fullDescription: PropTypes.string,
+		brief_description: PropTypes.string,
+		full_description: PropTypes.string,
 		difficulty: PropTypes.string,
-		price: PropTypes.number,
+		earn_amount: PropTypes.number,
 	}).isRequired,
 	onApply: PropTypes.func.isRequired,
 	onUnapply: PropTypes.func.isRequired,

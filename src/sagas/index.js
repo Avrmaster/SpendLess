@@ -17,11 +17,6 @@ import {
 	unapplyForChallenge,
 } from './EarnSagas'
 
-/* ------------- API ------------- */
-import ApiClient from 'api/ApiClient'
-
-const client = new ApiClient()
-
 /* ------------- Connect Types To sagas ------------- */
 export default function* root() {
 	yield all([
@@ -29,8 +24,8 @@ export default function* root() {
 		takeLatest(NavigationTypes.NAVIGATE_TO_REQUEST, navigateToRequest),
 		takeLatest(NavigationTypes.AUTO_NAVIGATION_REQUEST, profileAutoNavigationRequest),
 
-		takeLatest(EarnTypes.CHALLENGES_REQUEST, getChallenges, client),
-		takeLatest(EarnTypes.CHALLENGE_APPLY_REQUEST, applyChallenge, client),
-		takeLatest(EarnTypes.CHALLENGE_UN_APPLY_REQUEST, unapplyForChallenge, client),
+		takeLatest(EarnTypes.CHALLENGES_REQUEST, getChallenges),
+		takeLatest(EarnTypes.CHALLENGE_APPLY_REQUEST, applyChallenge),
+		takeLatest(EarnTypes.CHALLENGE_UN_APPLY_REQUEST, unapplyForChallenge),
 	])
 }

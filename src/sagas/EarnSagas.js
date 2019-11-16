@@ -2,11 +2,11 @@ import { call, put } from 'redux-saga/effects'
 import React from 'react'
 
 import EarnActions from 'reducers/EarnReducer'
-import ApiClient from 'api/ApiClient'
+import * as Api from 'api/Api'
 
-export function* getChallenges(action, api: ApiClient) {
+export function* getChallenges(action) {
 	try {
-		const challenges = yield call(api.app_challenges_get_all, action.id)
+		const challenges = yield call(Api.getChallenges, action.userId)
 		yield put(EarnActions.challengesSuccess(challenges))
 	} catch (error) {
 		yield put(EarnActions.challengesFailure(error))

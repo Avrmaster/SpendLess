@@ -7,12 +7,17 @@ import ChallengeBrief from 'components/ChallengeBrief'
 import Header from 'components/Header'
 import Colors from '../../themes/Colors'
 import LineError from '../../components/LineError/LineError.component'
+import EmptyList from '../../components/EmptyList/EmptyList'
 
 export default class ChallengesTab extends React.Component {
 	toDetails = createNavigation(this, 'details')
 
 	componentDidMount(): void {
-		this.props.getChallenges()
+		this.getChallenges()
+	}
+
+	getChallenges = () => {
+		this.props.getChallenges(this.props.user.id)
 	}
 
 	render() {
@@ -41,7 +46,7 @@ export default class ChallengesTab extends React.Component {
 					refreshControl={
 						<RefreshControl
 							refreshing={challengesFetching}
-							onRefresh={this.props.getChallenges}
+							onRefresh={this.getChallenges}
 						/>
 					}
 				>
@@ -56,12 +61,18 @@ export default class ChallengesTab extends React.Component {
 							))
 					}
 				</ScrollView>
+				<EmptyList
+					show={!challengesFetching && !challenges.length && !challengesError}
+					text={'Looks like you\nare spending well!\nNo challenges available yet :)'}
+				/>
 			</View>
 		)
 	}
 }
 
 ChallengesTab.propTypes = {
+	user: PropTypes.any.isRequired,
+
 	challenges: PropTypes.array.isRequired,
 	challengesFetching: PropTypes.bool.isRequired,
 	challengesError: PropTypes.any,
