@@ -15,7 +15,7 @@ export function* getChallenges(action) {
 
 export function* applyChallenge(action) {
 	try {
-		const aChallenge = yield call(Api.applyChallenge, action.userId, action.challengeId)
+		const aChallenge = yield call(Api.applyChallenge, action.userId, action.challengeId, action.wishId)
 		yield put(EarnActions.challengeUpdateSuccess(aChallenge))
 	} catch (error) {
 		yield put(EarnActions.challengesFailure(error))

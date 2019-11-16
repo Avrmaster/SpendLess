@@ -1,6 +1,7 @@
 import styled from 'styled-components/native'
 import Text from 'components/Text'
 import Colors from '../../themes/Colors'
+import { Picker } from 'react-native'
 
 export const Container = styled.View`
 	background-color: white;
@@ -35,7 +36,7 @@ export const Name = styled(Text)`
 
 export const Description = styled(Text)`
 	font-size: 16px;
-	padding-vertical: 50px;
+	padding-top: 50px;
 	color: #A3A3A3;
 `
 
@@ -47,8 +48,15 @@ export const Difficulty = styled(Text)`
 `
 
 export const Price = styled(Text)`
+	flex: 1;
 	font-size: 40px;
 	text-align: center;
+	margin-vertical: 20px;
+	color: ${Colors.beautifulGreen};
+`
+
+export const WishPicker = styled(Picker)`
+	flex: 1;
 `
 
 export const ApplyButton = styled.TouchableOpacity`
@@ -61,4 +69,10 @@ export const ApplyText = styled(Text)`
 	color: ${Colors.beautifulGreen}
 	font-weight: 800;
 	font-size: 26px;
+`
+
+export const EarningText = styled(Text)`
+	flex: 1;
+	text-align: center;
+	font-size: 45px;
 `

@@ -11,14 +11,18 @@ export default class ChallengeDetailsPage extends React.Component {
 		challenge: this.props.navigation.getParam('challenge'),
 	}
 
+	componentDidMount(): void {
+		this.props.updateWishList(this.props.user.id)
+	}
+
 	render() {
 		return (
 			<ScrollView
 				{...this.props}
 			>
 				<ChallengeDetails
-					onApply={() => {
-						this.props.applyForChallenge(this.props.user.id, this.state.challenge.id)
+					onApply={(wishId) => {
+						this.props.applyForChallenge(this.props.user.id, this.state.challenge.id, wishId)
 						this.goBack()
 					}}
 					onUnapply={() => {
@@ -26,6 +30,7 @@ export default class ChallengeDetailsPage extends React.Component {
 						this.goBack()
 					}}
 					challenge={this.state.challenge}
+					wishlist={[...this.props.wishlist]}
 				/>
 			</ScrollView>
 		)
@@ -34,6 +39,8 @@ export default class ChallengeDetailsPage extends React.Component {
 
 ChallengeDetailsPage.propTypes = {
 	user: PropTypes.object.isRequired,
+	wishlist: PropTypes.array.isRequired,
+	updateWishList: PropTypes.func.isRequired,
 	applyForChallenge: PropTypes.func.isRequired,
 	unApplyForChallenge: PropTypes.func.isRequired,
 }

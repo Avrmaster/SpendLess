@@ -6,7 +6,7 @@
     "start": "react-native start",
     "bundles": "open android/app/build/outputs/bundle/release",
     "build:client:staging": "cross-env SWAGGER=\"https://junction-staging.lknmessenger.co/1.0/swagger.json\" HOST=\"https://junction-staging.lknmessenger.co/1.0\" node scripts/BuildClient.js",
-    "ios": "react-native run-ios --simulator=\"iPhone 11 Pro Max\"",
+    "ios": "react-native run-ios --simulator=\"iPhone Xr\"",
     "android": "react-native run-android",
     "android:bundle": "yarn build:client && cd android && ./gradlew bundleRelease && cd .. && yarn bundles",
     "android:install": "cd android && ./gradlew assembleRelease && ./gradlew installRelease",

@@ -8,7 +8,7 @@ const { Types, Creators } = createActions({
 	challengesRequest: ['userId'],
 	wishListRequest: ['userId'],
 
-	challengeApplyRequest: ['userId', 'challengeId'],
+	challengeApplyRequest: ['userId', 'challengeId', 'wishId'],
 	wishListApplyRequest: ['userId', 'wishItemId'],
 
 	challengeUnApplyRequest: ['userId', 'challengeId'],
