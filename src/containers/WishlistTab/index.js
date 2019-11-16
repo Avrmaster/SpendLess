@@ -1,1 +1,1 @@
-export default from './Withlist.tab'
+export default from './Wishlist.tab'
