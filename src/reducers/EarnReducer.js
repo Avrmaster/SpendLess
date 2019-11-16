@@ -76,7 +76,7 @@ export const spendingsCreateSuccess = (state, action) =>
 	state.merge({
 		spendingsFetching: false,
 		spendingsError: null,
-		spendings: [...action.spendings, ...(action.newSpendingItem ? [action.newSpendingItem] : [])],
+		spendings: [...state.spendings, ...(action.newSpendingItem ? [action.newSpendingItem] : [])],
 	})
 export const spendingsFailure = (state, action) =>
 	state.merge({
