@@ -24,6 +24,9 @@ const { Types, Creators } = createActions({
 	spendingsFailure: ['error'],
 	challengesFailure: ['error'],
 	wishListFailure: ['error'],
+
+	wishItemCreate: ['userId', 'name', 'price', 'photo_url'],
+	wishItemCreateSuccess: ['newWithItem'],
 })
 
 export const EarnTypes = Types
@@ -131,6 +134,12 @@ export const wishListFailure = (state, action) =>
 		wishListError: action.error,
 	})
 
+export const wishItemCreateSuccess = (state, action) =>
+	state.merge({
+		wishListFetching: false,
+		wishListError: null,
+		wishList: [...state.wishList, ...(action.newWithItem ? [action.newWithItem] : [])],
+	})
 
 export const reducer = createReducer(INITIAL_STATE, {
 	[Types.LOGIN_REQUEST]: loginRequest,
@@ -158,4 +167,7 @@ export const reducer = createReducer(INITIAL_STATE, {
 	[Types.SPENDINGS_FAILURE]: spendingsFailure,
 	[Types.CHALLENGES_FAILURE]: challengesFailure,
 	[Types.WISH_LIST_FAILURE]: wishListFailure,
+
+	[Types.WISH_ITEM_CREATE]: wishListRequest,
+	[Types.WISH_ITEM_CREATE_SUCCESS]: wishItemCreateSuccess,
 })

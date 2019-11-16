@@ -14,6 +14,7 @@ function mapStateToProps(state) {
 function mapDispatchToPress(dispatch) {
   return {
     getWishList: (...args) => dispatch(EarnActions.wishListRequest(...args)),
+    createWishItem: (...args) => dispatch(EarnActions.wishItemCreate(...args)),
   }
 }
 

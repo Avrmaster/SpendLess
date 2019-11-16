@@ -30,10 +30,8 @@ export default class Wishlist extends React.Component {
 		this.setState({ modalVisible: visible })
 	}
 
-	addNewWishItem = (name, price, imageLink) => {
-		console.log(name)
-		console.log(price)
-		console.log(imageLink)
+	addNewWishItem = (name, price, photo_url) => {
+		this.props.createWishItem(this.props.user.id, name, price, photo_url)
 		this.setModalVisible(false)
 	}
 
@@ -44,51 +42,53 @@ export default class Wishlist extends React.Component {
 			wishListError,
 		} = this.props
 
-    return (
-      <View style={{flex: 1, backgroundColor: Colors.background}}>
-        <Header
-          title={'Wish list'}
-          style={{
-            backgroundColor: Colors.main,
-          }}
-          rightComponent={<TouchableOpacity onPress={() => this.setModalVisible(true)}>
-            <AwesomeIcon
-              color={'white'}
-              size={25}
-              name={'plus'}
-            />
-          </TouchableOpacity>}
-        />
-        <EmptyList
-          show={!wishListFetching && !wishList.length && !wishListError}
-          text={'There is nothing in your Wish list yet. \nClick "+" icon to create new'}
-        />
-        <ScrollView
-          refreshControl={
-            <RefreshControl
-              refreshing={wishListFetching}
-              onRefresh={this.getWishList}
-            />
-          }>
-          <Container>
-            <LineError
-              error={wishListError}
-            />
-            {
-              wishList && wishList.map((item, i) =>
-                <WishlistItem
-                  key={i}
-                  item={item} />,
-              )
-            }
-          </Container>
-          <WishlistNewModal
-            modalVisible={this.state.modalVisible}
-            hideModal={() => this.setModalVisible(false)}
-            onSubmit={this.addNewWishItem}
-          />
-        </ScrollView>
-      </View>
-    )
-  }
+		return (
+			<View style={{ flex: 1, backgroundColor: Colors.background }}>
+				<Header
+					title={'Wish list'}
+					style={{
+						backgroundColor: Colors.main,
+					}}
+					rightComponent={<TouchableOpacity onPress={() => this.setModalVisible(true)}>
+						<AwesomeIcon
+							color={'white'}
+							size={25}
+							name={'plus'}
+						/>
+					</TouchableOpacity>}
+				/>
+				<EmptyList
+					show={!wishListFetching && !wishList?.length && !wishListError}
+					text={'There is nothing in your Wish list yet. \nClick "+" icon to create new'}
+				/>
+				<ScrollView
+					refreshControl={
+						<RefreshControl
+							refreshing={wishListFetching}
+							onRefresh={this.getWishList}
+						/>
+					}>
+					<Container>
+						<LineError
+							error={wishListError}
+						/>
+						{
+							wishList && [...wishList]
+								.sort((a, b) => b.id - a.id)
+								.map((item, i) =>
+									<WishlistItem
+										key={i}
+										item={item} />,
+								)
+						}
+					</Container>
+					<WishlistNewModal
+						modalVisible={this.state.modalVisible}
+						hideModal={() => this.setModalVisible(false)}
+						onSubmit={this.addNewWishItem}
+					/>
+				</ScrollView>
+			</View>
+		)
+	}
 }
