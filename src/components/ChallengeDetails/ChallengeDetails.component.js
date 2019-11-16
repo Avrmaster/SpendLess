@@ -5,12 +5,13 @@ import React from 'react'
 import {
 	Container,
 	Row,
-	ChallengeImage,
 	Name,
-	BriefDescription,
+	Description,
 	Difficulty,
 	Price,
-} from './ChallengeBrief.styles'
+	ApplyButton,
+	ApplyText,
+} from './ChallengeDetails.styles'
 import {
 	formatPrice,
 } from 'helpers'
@@ -19,43 +20,38 @@ export default class ChallengeBrief extends React.Component {
 	render() {
 		const {
 			name,
-			imageUrl,
-			briefDescription,
+			fullDescription,
 			difficulty,
 			price,
 		} = this.props.challenge
 
 		return (
-			<Container
-				onPress={this.props.onPress}
-				activeOpacity={0.8}
-			>
-				<Row>
-					<ChallengeImage
-						source={{ uri: imageUrl }}
-					/>
-					<Name
-						children={name}
-					/>
-				</Row>
-				<BriefDescription
-					children={briefDescription}
+			<Container>
+				<Name
+					children={name}
+				/>
+				<Difficulty
+					children={difficulty}
+				/>
+				<Description
+					children={fullDescription}
 				/>
 				<Row>
-					<Difficulty
-						children={difficulty}
-					/>
 					<Price
-						children={formatPrice(price)}
+						children={'+' + formatPrice(price)}
 					/>
 				</Row>
+				<ApplyButton>
+					<ApplyText>
+						Apply
+					</ApplyText>
+				</ApplyButton>
 			</Container>
 		)
 	}
 }
 
 ChallengeBrief.propTypes = {
-	onPress: PropTypes.func.isRequired,
 	challenge: PropTypes.shape({
 		name: PropTypes.string,
 		imageUrl: PropTypes.string,

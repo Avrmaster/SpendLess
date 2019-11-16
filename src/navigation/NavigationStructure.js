@@ -19,8 +19,8 @@ export default createBottomTabNavigator(
 		Challenges: (
 			createStackNavigator(
 				{
-					tab: withBarStyleListener(ChallengesTab, 'light-content'),
-					details: withBarStyleListener(ChallengeDetailsPage, 'dark-content'),
+					tab: withBarStyleListener(ChallengesTab, 'dark-content'),
+					details: withBarStyleListener(ChallengeDetailsPage, 'light-content'),
 				},
 				{
 					initialRouteName: 'tab',

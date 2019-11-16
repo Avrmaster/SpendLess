@@ -7,6 +7,11 @@ import AppNavigation, { generateResetAction } from './NavigationStructure'
 const AppNavigationWithRedux = createAppContainer(AppNavigation)
 
 export const navigationRef = {
+	goBack: () => {
+		console.log(navigationRef.ref)
+		// navigationRef.ref?.goBack()
+	},
+
 	resetTo: (routeName) => {
 		const { _navigation } = navigationRef.ref
 

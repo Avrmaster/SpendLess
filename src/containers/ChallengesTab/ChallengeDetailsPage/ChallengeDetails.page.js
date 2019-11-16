@@ -1,28 +1,24 @@
-import { View, TouchableOpacity } from 'react-native'
+import { ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 import { createBackNavigation } from 'navigation/NavigationStructure'
-import { Text } from 'components'
+import { Text, ChallengeDetails } from 'components'
 
-export default class Tab1 extends React.Component {
+export default class ChallengeDetailsPage extends React.Component {
 	goBack = createBackNavigation(this)
+	state = {
+		challenge: this.props.navigation.getParam('challenge'),
+	}
 
 	render() {
 		return (
-			<View
-				style={{
-					flex: 1,
-					justifyContent: 'center',
-					alignItems: 'center',
-					backgroundColor: 'yellow',
-				}}
+			<ScrollView
+				{...this.props}
 			>
-				<TouchableOpacity onPress={this.goBack}>
-					<Text>
-						ChallengeDetails page (x)
-					</Text>
-				</TouchableOpacity>
-			</View>
+				<ChallengeDetails
+					challenge={this.state.challenge}
+				/>
+			</ScrollView>
 		)
 	}
 }
