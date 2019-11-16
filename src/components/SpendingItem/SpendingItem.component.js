@@ -15,7 +15,6 @@ export default class SpendingItem extends React.Component {
 	render() {
 		const {
 			name,
-			description,
 			date,
 			price,
 			sub_category,
@@ -23,18 +22,19 @@ export default class SpendingItem extends React.Component {
 
 		const dateObj = new Date(date)
 		const dateDay = dateObj.getDay()
-		const dateMonth = dateObj.toLocaleString('default', { month: 'short' });
+		const dateMonth = dateObj.toLocaleString('default', { month: 'short' })
 
 		return <Wrapper
 			activeOpacity={0.8}
-			underline={sub_category.category.color}>
+			underline={sub_category.category.color}
+			onPress={this.props.onPress}
+		>
 			<DateWrapper>
 				<DateDay>{dateDay}</DateDay>
 				<DateMonth>{dateMonth}</DateMonth>
 			</DateWrapper>
 			<ContentWrapper>
 				<Name>{name}</Name>
-				{description && <Description>{description}</Description>}
 				<Category>{sub_category.category.name}</Category>
 			</ContentWrapper>
 			<PriceWrapper>
@@ -45,9 +45,9 @@ export default class SpendingItem extends React.Component {
 }
 
 SpendingItem.propTypes = {
+	onPress: PropTypes.func.isRequired,
 	item: PropTypes.shape({
 		name: PropTypes.string,
-		description: PropTypes.string,
 		date: PropTypes.string,
 		price: PropTypes.number,
 		sub_category: PropTypes.shape({
