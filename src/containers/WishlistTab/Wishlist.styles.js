@@ -25,7 +25,3 @@ export const TopWrapper = styled(View)`
   justify-content: space-between;
   width: 100%;
 `
-
-export const ButtonAdd = styled(Button)`
-  
-`

@@ -7,6 +7,7 @@ import Colors from '../../themes/Colors'
 export const Container = styled.View`
 	padding-top: ${ifIphoneX(50, 0)}px;
 	justify-content: flex-end;
+	position: relative;
 `
 
 export const Title = styled(Text)`
@@ -19,6 +20,12 @@ export const Title = styled(Text)`
 
 export const LeftButtonHolder = styled.TouchableOpacity`
 	padding: 0 10px;
+`
+
+export const RightComponentHolder = styled.View`
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
 `
 
 export const LeftIcon = styled(AwesomeIcon)`
