@@ -10,6 +10,7 @@ export default () => {
 	function createReducer() {
 		return combineReducers({
 			nav: require('./NavigationReducer').reducer,
+			earn: require('./EarnReducer').reducer,
 		})
 	}
 

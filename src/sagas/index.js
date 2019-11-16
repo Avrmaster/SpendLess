@@ -3,6 +3,7 @@ import React from 'react'
 
 /* ------------- Types ------------- */
 import { NavigationTypes } from '../reducers/NavigationReducer'
+import { EarnTypes } from '../reducers/EarnReducer'
 
 /* ------------- Sagas ------------- */
 import {
@@ -10,8 +11,14 @@ import {
 	navigateToRequest,
 	profileAutoNavigationRequest,
 } from './NavigationSagas'
+import {
+	getChallenges,
+} from './EarnSagas'
 
 /* ------------- API ------------- */
+import ApiClient from 'api/ApiClient'
+
+const client = new ApiClient()
 
 /* ------------- Connect Types To sagas ------------- */
 export default function* root() {
@@ -19,5 +26,7 @@ export default function* root() {
 		takeLatest(NavigationTypes.LOGOUT_REQUEST, logout),
 		takeLatest(NavigationTypes.NAVIGATE_TO_REQUEST, navigateToRequest),
 		takeLatest(NavigationTypes.AUTO_NAVIGATION_REQUEST, profileAutoNavigationRequest),
+
+		takeLatest(EarnTypes.CHALLENGES_REQUEST, getChallenges, client),
 	])
 }
