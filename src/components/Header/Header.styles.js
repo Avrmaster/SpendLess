@@ -1,18 +1,28 @@
 import styled from 'styled-components/native'
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome'
 import { ifIphoneX } from 'react-native-iphone-x-helper'
+import Text from 'components/Text'
+import Colors from '../../themes/Colors'
 
 export const Container = styled.View`
-	padding-top: ${ifIphoneX() ? 10 : 30}px;
+	padding-top: ${ifIphoneX(50, 0)}px;
 	justify-content: flex-end;
 `
 
+export const Title = styled(Text)`
+	text-align: center;
+	margin: 14px;
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+`
+
 export const LeftButtonHolder = styled.TouchableOpacity`
-	padding: 10px;
+	padding: 0 10px;
 `
 
 export const LeftIcon = styled(AwesomeIcon)`
-	padding: 10px
+	padding: 0 10px
 `
 
 export const ImageHeaderMinHeight = ifIphoneX(100, 70)

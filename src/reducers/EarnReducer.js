@@ -18,6 +18,10 @@ export default Creators
 
 /* ------------- Initial State ------------- */
 export const INITIAL_STATE = Immutable({
+	user: {
+		id: 1,
+	},
+
 	challenges: [],
 	challengesFetching: false,
 	challengesError: null,
@@ -42,7 +46,7 @@ export const challengesUpdateSuccess = (state, action) =>
 			.map((oldChallenge) =>
 				oldChallenge.id === action.challenge.id
 					? action.challenge
-					: oldChallenge
+					: oldChallenge,
 			),
 	})
 export const challengesFailure = (state, action) =>

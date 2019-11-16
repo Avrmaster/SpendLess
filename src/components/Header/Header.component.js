@@ -4,6 +4,7 @@ import * as PropTypes from 'prop-types'
 import { createBackNavigation } from 'navigation/NavigationStructure'
 import {
 	Container,
+	Title,
 	LeftButtonHolder,
 	LeftIcon,
 } from './Header.styles'
@@ -12,11 +13,15 @@ export default class Header extends React.Component {
 	goBack = createBackNavigation(this)
 
 	render() {
+		const { hasBack, title } = this.props
 
 		return (
-			<Container>
+			<Container {...this.props}>
 				{
-					this.props.hasBack && (
+					title && <Title children={title}/>
+				}
+				{
+					hasBack && (
 						<LeftButtonHolder
 							activeOpacity={0.8}
 							onPress={this.goBack}
@@ -36,4 +41,5 @@ export default class Header extends React.Component {
 
 Header.propTypes = {
 	hasBack: PropTypes.bool,
+	title: PropTypes.string,
 }

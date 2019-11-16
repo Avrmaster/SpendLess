@@ -41,7 +41,9 @@ export default class ChallengeBrief extends React.Component {
 						children={'+' + formatPrice(price)}
 					/>
 				</Row>
-				<ApplyButton>
+				<ApplyButton onPress={() => {
+					this.props.onApply()
+				}}>
 					<ApplyText>
 						Apply
 					</ApplyText>
@@ -60,4 +62,6 @@ ChallengeBrief.propTypes = {
 		difficulty: PropTypes.string,
 		price: PropTypes.number,
 	}).isRequired,
+	onApply: PropTypes.func.isRequired,
+	onUnapply: PropTypes.func.isRequired,
 }

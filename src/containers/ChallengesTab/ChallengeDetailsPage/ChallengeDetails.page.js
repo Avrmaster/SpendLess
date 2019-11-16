@@ -1,8 +1,9 @@
-import { ScrollView, TouchableOpacity } from 'react-native'
+import { ScrollView } from 'react-native'
 import React from 'react'
 
 import { createBackNavigation } from 'navigation/NavigationStructure'
-import { Text, ChallengeDetails } from 'components'
+import { ChallengeDetails } from 'components'
+import * as PropTypes from 'prop-types'
 
 export default class ChallengeDetailsPage extends React.Component {
 	goBack = createBackNavigation(this)
@@ -16,9 +17,22 @@ export default class ChallengeDetailsPage extends React.Component {
 				{...this.props}
 			>
 				<ChallengeDetails
+					onApply={() => {
+						this.props.applyForChallenge()
+						this.goBack()
+					}}
+					onUnapply={() => {
+						this.props.unApplyForChallenge()
+						this.goBack()
+					}}
 					challenge={this.state.challenge}
 				/>
 			</ScrollView>
 		)
 	}
+}
+
+ChallengeDetailsPage.propTypes = {
+	applyForChallenge: PropTypes.func.isRequired,
+	unApplyForChallenge: PropTypes.func.isRequired,
 }

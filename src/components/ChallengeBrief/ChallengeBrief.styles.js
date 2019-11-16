@@ -7,9 +7,10 @@ export const Container = styled.TouchableOpacity`
 	justify-content: space-between;
 	padding: 10px;
 	border-radius: 5px;
+	margin-bottom: 10px;
 	
 	shadow-color: #a3a3a3;
-	shadow-offset: 0px 20px;
+	shadow-offset: 0px 5px;
 	shadow-opacity: 0.5;
 	shadow-radius: 10;
 	elevation: 1px;

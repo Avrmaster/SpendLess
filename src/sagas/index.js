@@ -3,7 +3,7 @@ import React from 'react'
 
 /* ------------- Types ------------- */
 import { NavigationTypes } from '../reducers/NavigationReducer'
-import { challengesRequest, EarnTypes } from '../reducers/EarnReducer'
+import { EarnTypes } from '../reducers/EarnReducer'
 
 /* ------------- Sagas ------------- */
 import {

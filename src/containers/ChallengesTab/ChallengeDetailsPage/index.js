@@ -4,6 +4,7 @@ import React from 'react'
 
 import StaticHeader, { ImageHeader, ImageHeaderMinHeight, ImageHeaderMaxHeight } from 'components/Header'
 import { withCollapsibleHeader } from 'decorators'
+import EarnActions from 'reducers/EarnReducer'
 
 function mapStateToProps(state) {
 	return {
@@ -12,7 +13,10 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToPress(dispatch) {
-	return {}
+	return {
+		applyForChallenge: (...args) => dispatch(EarnActions.challengeApplyRequest(...args)),
+		unApplyForChallenge: (...args) => dispatch(EarnActions.challengeUnApplyRequest(...args)),
+	}
 }
 
 export default connect(mapStateToProps, mapDispatchToPress)(
