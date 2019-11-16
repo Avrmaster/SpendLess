@@ -9,11 +9,16 @@ export const Container = styled.TouchableOpacity`
 	border-radius: 5px;
 	margin-bottom: 10px;
 	
+	border-bottom-width: 3px;
+	border-bottom-color: ${({ underline }) => underline};
+	
 	shadow-color: #a3a3a3;
 	shadow-offset: 0px 5px;
 	shadow-opacity: 0.5;
 	shadow-radius: 10;
 	elevation: 1px;
+	
+	overflow: visible;
 `
 
 export const Row = styled.View`
@@ -23,7 +28,7 @@ export const Row = styled.View`
 `
 
 export const ChallengeImage = styled.Image`
-	width: 230px;
+	width: 200px;
 	height: 130px;
 `
 
@@ -47,4 +52,23 @@ export const Difficulty = styled(Text)`
 
 export const Price = styled(Text)`
 	font-size: 30px;
+`
+
+export const Category = styled(Text)`
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	color: #848484;
+	font-size: 12px;
+`
+
+export const AppliedStar = styled.Image`
+	position: absolute;
+	top: -15px;
+	left: -15px;
+	width: 30px;
+	height: 30px;
+	z-index: 1000;
+	background-color: aliceblue;
+	border-radius: 15px;
 `

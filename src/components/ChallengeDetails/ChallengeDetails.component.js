@@ -1,4 +1,3 @@
-import {} from 'react-native'
 import * as PropTypes from 'prop-types'
 import React from 'react'
 
@@ -19,20 +18,24 @@ import {
 export default class ChallengeBrief extends React.Component {
 	render() {
 		const {
+			applied,
 			name,
 			full_description,
 			difficulty,
 			earn_amount,
+			sub_category,
 		} = this.props.challenge
 
 		return (
-			<Container>
-				<Name
-					children={name}
-				/>
+			<Container
+				underline={sub_category.category.color}
+			>
 				<Difficulty
 					children={difficulty}
 				/>
+				<Name>
+					{name}
+				</Name>
 				<Description
 					children={full_description}
 				/>
@@ -42,10 +45,18 @@ export default class ChallengeBrief extends React.Component {
 					/>
 				</Row>
 				<ApplyButton onPress={() => {
-					this.props.onApply()
+					if (applied) {
+						this.props.onApply()
+					} else {
+						this.props.onUnapply()
+					}
 				}}>
 					<ApplyText>
-						Apply
+						{
+							applied
+								? 'Unapply'
+								: 'Apply'
+						}
 					</ApplyText>
 				</ApplyButton>
 			</Container>
@@ -55,12 +66,20 @@ export default class ChallengeBrief extends React.Component {
 
 ChallengeBrief.propTypes = {
 	challenge: PropTypes.shape({
+		applied: PropTypes.bool,
 		name: PropTypes.string,
 		imageUrl: PropTypes.string,
 		brief_description: PropTypes.string,
 		full_description: PropTypes.string,
 		difficulty: PropTypes.string,
 		earn_amount: PropTypes.number,
+		sub_category: PropTypes.shape({
+			category: PropTypes.shape({
+				color: PropTypes.string,
+				description: PropTypes.string,
+				name: PropTypes.string,
+			}),
+		}),
 	}).isRequired,
 	onApply: PropTypes.func.isRequired,
 	onUnapply: PropTypes.func.isRequired,

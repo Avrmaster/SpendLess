@@ -18,11 +18,11 @@ export default class ChallengeDetailsPage extends React.Component {
 			>
 				<ChallengeDetails
 					onApply={() => {
-						this.props.applyForChallenge()
+						this.props.applyForChallenge(this.props.user.id, this.state.challenge.id)
 						this.goBack()
 					}}
 					onUnapply={() => {
-						this.props.unApplyForChallenge()
+						this.props.unApplyForChallenge(this.props.user.id, this.state.challenge.id)
 						this.goBack()
 					}}
 					challenge={this.state.challenge}
@@ -33,6 +33,7 @@ export default class ChallengeDetailsPage extends React.Component {
 }
 
 ChallengeDetailsPage.propTypes = {
+	user: PropTypes.object.isRequired,
 	applyForChallenge: PropTypes.func.isRequired,
 	unApplyForChallenge: PropTypes.func.isRequired,
 }

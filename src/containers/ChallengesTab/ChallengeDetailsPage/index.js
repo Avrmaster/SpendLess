@@ -8,6 +8,7 @@ import EarnActions from 'reducers/EarnReducer'
 
 function mapStateToProps(state) {
 	return {
+		user: state.earn.user,
 		hasBack: true,
 	}
 }

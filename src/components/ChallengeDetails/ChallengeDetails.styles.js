@@ -14,6 +14,9 @@ export const Container = styled.View`
 	shadow-opacity: 0.5;
 	shadow-radius: 10;
 	elevation: 1px;
+	
+	border-bottom-color: ${({ underline }) => underline};
+	border-bottom-width: 4px;
 `
 
 export const Row = styled.View`
@@ -33,7 +36,7 @@ export const Name = styled(Text)`
 export const Description = styled(Text)`
 	font-size: 16px;
 	padding-vertical: 50px;
-	color: #A3A3A3
+	color: #A3A3A3;
 `
 
 export const Difficulty = styled(Text)`

@@ -13,6 +13,15 @@ export function* getChallenges(action) {
 	}
 }
 
+export function* getSpendings(action) {
+	try {
+		const spendings = yield call(Api.getSpendings, action.userId)
+		yield put(EarnActions.spendingsSuccess(spendings))
+	} catch (error) {
+		yield put(EarnActions.spendingsFailure(error))
+	}
+}
+
 export function* applyChallenge(action, api: ApiClient) {
 
 }
