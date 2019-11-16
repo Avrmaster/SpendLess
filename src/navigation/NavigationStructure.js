@@ -1,6 +1,11 @@
 import { fadeOut, fromRight } from 'react-navigation-transitions'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { createStackNavigator } from 'react-navigation-stack'
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import Octicons from 'react-native-vector-icons/Octicons'
+import AntDesign from 'react-native-vector-icons/AntDesign'
+import React from 'react'
 
 import { withBarStyleListener } from './utils'
 
@@ -33,7 +38,22 @@ export default createBottomTabNavigator(
 		Account: withBarStyleListener(AccountTab, 'dark-content'),
 	}, {
 		lazy: false,
-		order: ['Challenges', 'Spendings', 'Wishlist', 'Account'],
+		defaultNavigationOptions: ({ navigation }) => ({
+			tabBarIcon: ({ focused, tintColor }) => {
+				const { routeName } = navigation.state
+
+				if (routeName === 'Spendings') {
+					return <FontAwesome5 name={'money-check-alt'} size={25} color={tintColor}/>
+				} else if (routeName === 'Challenges') {
+					return <MaterialCommunityIcons name={'playlist-star'} size={25} color={tintColor}/>
+				} else if (routeName === 'Wishlist') {
+					return <Octicons name={'checklist'} size={25} color={tintColor}/>
+				}
+
+				return <AntDesign name={'user'} size={25} color={tintColor}/>
+			},
+		}),
+		order: ['Spendings', 'Challenges', 'Wishlist', 'Account'],
 	},
 )
 
