@@ -13,6 +13,16 @@ export function* getChallenges(action) {
 	}
 }
 
+
+export function* getWishList(action) {
+	try {
+		const wishList = yield call(Api.getWishList, action.userId)
+		yield put(EarnActions.wishListSuccess(wishList))
+	} catch (error) {
+		yield put(EarnActions.wishListFailure(error))
+	}
+}
+
 export function* applyChallenge(action, api: ApiClient) {
 
 }
