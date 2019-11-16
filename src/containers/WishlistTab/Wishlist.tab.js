@@ -3,7 +3,8 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 import { Text, WishlistItem } from 'components';
 
-import { Container, Title } from './Wishlist.styles';
+import { ButtonAdd, Container, Title, TopWrapper } from './Wishlist.styles';
+import { WishlistNewModal } from './WishlistNewModal';
 
 let items = [
   {
@@ -33,13 +34,23 @@ let items = [
 ];
 
 export default class Tab1 extends React.Component {
+  state = {
+    modalVisible: false,
+  };
+
+  setModalVisible = (visible) => {
+    this.setState({modalVisible: visible});
+  };
+
   render() {
     return (
       <ScrollView>
         <Container>
-          <Title>
-            Wish List:
-          </Title>
+          <TopWrapper>
+            <Title>Wish list</Title>
+            <ButtonAdd title={'Add new'} onPress={() => this.setModalVisible(true)} />
+          </TopWrapper>
+
           {
             items.map((item, i) =>
               <WishlistItem
@@ -50,6 +61,7 @@ export default class Tab1 extends React.Component {
                 image={item.image} />)
           }
         </Container>
+        <WishlistNewModal modalVisible={this.state.modalVisible} hideModal={() => this.setModalVisible(false)} />
       </ScrollView>
     );
   }

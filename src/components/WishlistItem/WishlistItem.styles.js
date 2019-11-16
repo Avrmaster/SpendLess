@@ -4,7 +4,8 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import { Text, Progressbar } from 'components';
+import { Text } from 'components';
+import Progressbar from 'components/Progressbar';
 
 export const Wrapper = styled(TouchableOpacity)`
   margin-bottom: 20px;
