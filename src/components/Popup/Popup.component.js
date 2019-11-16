@@ -1,3 +1,4 @@
+import { Keyboard } from 'react-native'
 import React from 'react'
 
 import { createFollowAnimation } from 'helpers'
@@ -25,6 +26,7 @@ export default class Popup extends React.PureComponent {
 	}
 
 	hide = (): Popup => {
+		Keyboard.dismiss()
 		this.setState({
 			hidden: true,
 		})
