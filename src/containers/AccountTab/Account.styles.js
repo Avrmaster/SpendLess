@@ -16,7 +16,6 @@ export const LottieHeader = styled(LottieView)`
 export const LottieCard = styled(LottieView)`
 	width: ${width}px;
 	height: ${100}px;
-	margin-top: 20px;
 	margin-bottom: 30px;
 `
 
@@ -28,7 +27,7 @@ export const LottieProfile = styled(LottieView)`
 export const FeaturedText = styled(Text)`
 	font-size: 20px;
 	text-align: center;
-	margin: 30px;
+	margin: 80px 0 30px;
 	font-style: italic;
 `
 

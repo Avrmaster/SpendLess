@@ -51,14 +51,14 @@ export default class Tab1 extends React.Component {
 								.map((id) => (<Picker.Item label={`User ${id}`} value={id}/>))}
 						</Picker>
 					</Row>
+					<FeaturedText>
+						{`And here you will be able to\nconnect your bank account`}
+					</FeaturedText>
 					<LottieCard
 						source={require('../../../assets/animations/6780-credit-card-reveal')}
 						autoPlay
 						loop
 					/>
-					<FeaturedText>
-						{`Here you will be able to\nconnect your bank account`}
-					</FeaturedText>
 				</ScrollView>
 			</>
 		)

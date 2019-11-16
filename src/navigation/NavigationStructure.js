@@ -35,7 +35,7 @@ export default createBottomTabNavigator(
 			)
 		),
 		Wishlist: withBarStyleListener(WishlistTab, 'light-content'),
-		Account: withBarStyleListener(AccountTab, 'dark-content'),
+		Account: withBarStyleListener(AccountTab, 'light-content'),
 	}, {
 		lazy: false,
 		defaultNavigationOptions: ({ navigation }) => ({
