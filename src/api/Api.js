@@ -12,4 +12,4 @@ export const unappplyChallenge = (userId, challengeId) => clientApi.app_challeng
 	challengeId,
 })
 export const getWishList = userId => clientApi.app_wishlist_get_all({ fromUser: { id: userId } })
-export const getSpendings = userId => Promise.resolve([])
+export const getSpendings = userId => clientApi.app_items_get_all({ fromUser: { id: userId } })

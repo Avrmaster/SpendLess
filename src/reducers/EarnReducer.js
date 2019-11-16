@@ -14,7 +14,7 @@ const { Types, Creators } = createActions({
 	challengeUnApplyRequest: ['userId', 'challengeId'],
 	wishListUnApplyRequest: ['userId', 'wishItemId'],
 
-	spendingsSuccess: ['spendigs'],
+	spendingsSuccess: ['spendings'],
 	challengesSuccess: ['challenges'],
 	wishListSuccess: ['wishList'],
 
@@ -35,7 +35,7 @@ export const INITIAL_STATE = Immutable({
 		id: 2,
 	},
 
-	spendigs: [],
+	spendings: [],
 	challenges: [],
 
 	spendingsFetching: false,
@@ -66,7 +66,7 @@ export const spendingsSuccess = (state, action) =>
 	state.merge({
 		spendingsFetching: false,
 		spendingsError: null,
-		spendings: action.spendigs,
+		spendings: action.spendings,
 	})
 export const spendingsFailure = (state, action) =>
 	state.merge({
