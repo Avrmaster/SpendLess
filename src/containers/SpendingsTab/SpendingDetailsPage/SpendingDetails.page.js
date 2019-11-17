@@ -101,7 +101,7 @@ export default class SpendingDetailsPage extends React.Component {
 					<Name>{this.state.item.name}</Name>
 					{this.state.item.description &&
 					<Row>
-						<TextBold>Description:</TextBold>
+						<TextBold>Description: </TextBold>
 						<TextDefault>{this.state.item.description}</TextDefault>
 					</Row>}
 					<Row>

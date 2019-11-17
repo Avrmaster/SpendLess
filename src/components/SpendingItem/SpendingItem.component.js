@@ -21,7 +21,7 @@ export default class SpendingItem extends React.Component {
 		} = this.props.item
 
 		const dateObj = new Date(date)
-		const dateDay = dateObj.getDay()
+		const dateDay = dateObj.getDate()
 		const dateMonth = dateObj.toLocaleString('default', { month: 'short' })
 
 		return <Wrapper

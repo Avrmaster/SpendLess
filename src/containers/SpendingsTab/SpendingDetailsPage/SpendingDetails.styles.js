@@ -24,6 +24,6 @@ export const TextBold = styled(Text)`
 
 export const Row = styled(View)`
 	flex-direction: row;
-	align-items: center;
+	align-items: flex-end;
 	margin-bottom: 15px;
 `
