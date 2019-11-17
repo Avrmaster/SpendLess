@@ -37,3 +37,10 @@ export const getCategoryChart = (userId, categoryId) => clientApi.app_charts_get
     category_id: categoryId,
   },
 })
+
+export const getSubCategoryChart = (userId, subCategoryId) => clientApi.app_charts_get_line_chart_data({
+  fromUser: {
+    id: userId,
+    sub_category_id: subCategoryId,
+  },
+})

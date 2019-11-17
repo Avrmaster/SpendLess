@@ -10,6 +10,7 @@ export const ModalTextInput = styled.TextInput`
   border-bottom-color: rgb(177,177,177);
   border-bottom-width: 1px;
   font-size: 18px;
+  color: black;
 `
 
 export const InputText = styled(Text)`

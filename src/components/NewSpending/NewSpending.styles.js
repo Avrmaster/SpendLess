@@ -1,5 +1,5 @@
 import styled from 'styled-components/native'
-import { Picker } from 'react-native'
+import {Picker} from 'react-native'
 
 import Text from 'components/Text'
 import Colors from '../../themes/Colors'
@@ -19,10 +19,12 @@ export const Input = styled.TextInput`
 	padding: 10px;
 	margin: 10px;
 	font-size: 30px;
+		color: black;
 `
 
 export const DescriptionInput = styled(Input)`
 	height: 100px;
+	color: black;
 `
 
 export const CategoryPicker = styled(Picker)`

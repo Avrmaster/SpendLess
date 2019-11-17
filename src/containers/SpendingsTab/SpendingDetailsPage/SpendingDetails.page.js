@@ -1,47 +1,58 @@
-import { ScrollView, Dimensions } from 'react-native'
+import {ScrollView, Dimensions} from 'react-native'
 import React from 'react'
 import moment from 'moment'
 import Color from 'color'
 
-import { createBackNavigation } from 'navigation/NavigationStructure'
+import {createBackNavigation} from 'navigation/NavigationStructure'
 import * as PropTypes from 'prop-types'
-import { Container, Name, Row, TextBold, TextDefault } from './SpendingDetails.styles'
+import {Container, Name, Row, TextBold, TextDefault} from './SpendingDetails.styles'
 
 import {
   LineChart,
   BarChart,
 } from 'react-native-chart-kit'
-import { getChartConfig } from '../../../helpers/charts'
-import { getCategoryChart } from '../../../api/Api'
+import {getChartConfig} from 'helpers/charts'
+import {getCategoryChart, getSubCategoryChart} from 'api/Api'
+import {Text} from 'components'
 
 const graphStyle = {
-  marginVertical: 5,
+  marginTop: 15,
+  marginBottom: 4,
   borderRadius: 10,
   marginLeft: 'auto',
   marginRight: 'auto',
 }
 const graphHeight = 230
 
+function mapListChartData(data) {
+  return {
+    labels: data[0].slice(data[0].length - 6, data[0].length).map(i => i.substring(0, 3)),
+    datasets: [{data: data[1].slice(data[1].length - 6, data[1].length)}],
+  }
+}
+
 export default class SpendingDetailsPage extends React.Component {
   goBack = createBackNavigation(this)
   state = {
     item: this.props.navigation.getParam('spendingItem'),
-    chartData: null,
+    chartDataCategory: null,
+    chartDataSubcategory: null,
   }
 
   componentDidMount(): void {
     this.props.updateSpendings(this.props.user.id)
-    this.updateChart(this.props.user.id)
+    this.updateCharts(this.props.user.id)
   }
 
-  updateChart = (userId) => {
+  updateCharts = (userId) => {
     getCategoryChart(userId, this.state.item.sub_category.category.id)
       .then(data => this.setState(state => {
+        return {chartDataCategory: mapListChartData(data)}
+      }))
+    getSubCategoryChart(userId, this.state.item.sub_category.id)
+      .then(data => this.setState(state => {
         return {
-          chartData: {
-            labels: data[0].slice(data[0].length - 6, data[0].length).map(i => i.substring(0, 3)),
-            datasets: [{data: data[1].slice(data[1].length - 6, data[1].length)}],
-          },
+          chartDataSubCategory: mapListChartData(data),
         }
       }))
   }
@@ -78,25 +89,29 @@ export default class SpendingDetailsPage extends React.Component {
             <TextDefault>${this.state.item.price}</TextDefault>
           </Row>
         </Container>
-        {this.state.chartData && <>
-          <BarChart
-            style={graphStyle}
-            data={this.state.chartData}
-            width={graphWidth}
-            height={graphHeight}
-            yAxisLabel={'$'}
-            chartConfig={chartConfig}
-          />
-
+        {this.state.chartDataCategory && <>
           <LineChart
             style={graphStyle}
-            data={this.state.chartData}
+            data={this.state.chartDataCategory}
             width={graphWidth}
             height={graphHeight}
             yAxisLabel={'$'}
             chartConfig={chartConfig}
             bezier
           />
+          <Text style={{textAlign: 'center'}}>Categories chart</Text>
+        </>}
+        {this.state.chartDataSubCategory && <>
+          <LineChart
+            style={graphStyle}
+            data={this.state.chartDataSubCategory}
+            width={graphWidth}
+            height={graphHeight}
+            yAxisLabel={'$'}
+            chartConfig={chartConfig}
+            bezier
+          />
+          <Text style={{textAlign: 'center'}}>Sub categories chart</Text>
         </>}
       </ScrollView>
     )
