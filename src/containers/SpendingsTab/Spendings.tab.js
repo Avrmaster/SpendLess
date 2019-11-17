@@ -62,7 +62,7 @@ export default class Spendings extends React.Component {
 				>
 					{
 						[...spendings]
-							.sort((a, b) => b.id - a.id)
+							.sort((a, b) => new Date(b.date) - new Date(a.date))
 							.map(spendingItem => (
 								<SpendingItem
 									key={spendingItem.id}
