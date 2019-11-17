@@ -1,8 +1,14 @@
 import { call, put } from 'redux-saga/effects'
 import React from 'react'
+import { View } from 'react-native'
+import LottieView from 'lottie-react-native'
+import Text from 'components/Text'
 
 import EarnActions from 'reducers/EarnReducer'
 import * as Api from 'api/Api'
+import { popupRef } from '../containers/App/RootContainer'
+import { LottieCard } from '../containers/AccountTab/Account.styles'
+import Colors from '../themes/Colors'
 
 export function* getChallenges(action) {
 	try {
@@ -62,6 +68,43 @@ export function* createWishItem(action) {
 export function* createSpendingItem(action) {
 	try {
 		const item = yield call(Api.createSpendItem, action.spendingItem)
+		if (item.new_challenge_created) {
+			yield put(EarnActions.challengesRequest(action.spendingItem.user_fk))
+			setTimeout(() => {
+				popupRef.ref.set(
+					<View
+						style={{
+							backgroundColor: '#BBBBBB',
+							borderRadius: 20,
+						}}
+					>
+						<LottieView
+							style={{
+								width: 300,
+								height: 300,
+							}}
+							autoPlay
+							loop
+							source={require('../../assets/animations/3150-success')}
+						/>
+						<Text
+							style={{
+								position: 'absolute',
+								color: Colors.main,
+								textAlign: 'center',
+								left: 0,
+								right: 0,
+								bottom: 20,
+								fontSize: 24,
+								fontWeight: 'bold',
+							}}
+						>
+							{`New Challenges\nAvailable`}
+						</Text>
+					</View>,
+				)
+			})
+		}
 		yield put(EarnActions.spendingItemCreateSuccess(item))
 	} catch (error) {
 		yield put(EarnActions.spendingsFailure(error))
