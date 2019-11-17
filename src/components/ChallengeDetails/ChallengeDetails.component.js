@@ -39,14 +39,15 @@ export default class ChallengeBrief extends React.Component {
 			difficulty,
 			earn_amount,
 			sub_category,
-			wishlist: challengeWishlist,
+			challenge_time_progress,
+			challenge_price_progress,
 		} = this.props.challenge
 		const {
 			wishlist,
 		} = this.props
 
-		const timeProgress = Math.round(challengeWishlist?.[0]?.challenge_time_progress * 100 || 0)
-		const priceProgress = Math.round(challengeWishlist?.[0]?.challenge_price_progress * 100 || 0)
+		const timeProgress = Math.round(challenge_time_progress * 100 || 0)
+		const priceProgress = Math.round((1 - challenge_price_progress) * 100 || 100)
 		const subColor = sub_category.category.color
 
 		return (
@@ -125,7 +126,9 @@ export default class ChallengeBrief extends React.Component {
 					applied && (
 						<Block>
 							<ProgressHolder>
-								<ProgressText>
+								<ProgressText
+									style={{ width: 60 }}
+								>
 									{`Time`}
 								</ProgressText>
 								<ProgressCircle
@@ -148,8 +151,13 @@ export default class ChallengeBrief extends React.Component {
 								>
 									<ProgressText>{priceProgress}%</ProgressText>
 								</ProgressCircle>
-								<ProgressText>
-									{`Price`}
+								<ProgressText
+									style={{
+										textAlign: 'right',
+										width: 60,
+									}}
+								>
+									{`Money\nleft`}
 								</ProgressText>
 							</ProgressHolder>
 						</Block>
