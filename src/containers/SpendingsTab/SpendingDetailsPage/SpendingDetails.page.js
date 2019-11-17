@@ -10,44 +10,40 @@ import { Container, Name, Row, TextBold, TextDefault } from './SpendingDetails.s
 import {
   LineChart,
   BarChart,
-  ProgressChart,
-  ContributionGraph,
-  StackedBarChart,
 } from 'react-native-chart-kit'
 import { getChartConfig } from '../../../helpers/charts'
-
-const barData = {
-  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-  datasets: [
-    {
-      data: [Math.random() * 100,
-				Math.random() * 100,
-				Math.random() * 100,
-				Math.random() * 100,
-				Math.random() * 100,
-				Math.random() * 100],
-      strokeWidth: 2, // optional
-    },
-  ],
-}
+import { getCategoryChart } from '../../../api/Api'
 
 const graphStyle = {
-	marginVertical: 5,
-	borderRadius: 10,
-	marginLeft: "auto",
-	marginRight: "auto",
+  marginVertical: 5,
+  borderRadius: 10,
+  marginLeft: 'auto',
+  marginRight: 'auto',
 }
 const graphHeight = 230
-
 
 export default class SpendingDetailsPage extends React.Component {
   goBack = createBackNavigation(this)
   state = {
     item: this.props.navigation.getParam('spendingItem'),
+    chartData: null,
   }
 
   componentDidMount(): void {
     this.props.updateSpendings(this.props.user.id)
+    this.updateChart(this.props.user.id)
+  }
+
+  updateChart = (userId) => {
+    getCategoryChart(userId, this.state.item.sub_category.category.id)
+      .then(data => this.setState(state => {
+        return {
+          chartData: {
+            labels: data[0].slice(data[0].length - 6, data[0].length).map(i => i.substring(0, 3)),
+            datasets: [{data: data[1].slice(data[1].length - 6, data[1].length)}],
+          },
+        }
+      }))
   }
 
   render() {
@@ -82,24 +78,26 @@ export default class SpendingDetailsPage extends React.Component {
             <TextDefault>${this.state.item.price}</TextDefault>
           </Row>
         </Container>
-        <BarChart
-          style={graphStyle}
-          data={barData}
-          width={graphWidth}
-          height={graphHeight}
-          yAxisLabel={'$'}
-          chartConfig={chartConfig}
-        />
+        {this.state.chartData && <>
+          <BarChart
+            style={graphStyle}
+            data={this.state.chartData}
+            width={graphWidth}
+            height={graphHeight}
+            yAxisLabel={'$'}
+            chartConfig={chartConfig}
+          />
 
-        <LineChart
-          style={graphStyle}
-          data={barData}
-          width={graphWidth}
-          height={graphHeight}
-          yAxisLabel={'$'}
-          chartConfig={chartConfig}
-          bezier
-        />
+          <LineChart
+            style={graphStyle}
+            data={this.state.chartData}
+            width={graphWidth}
+            height={graphHeight}
+            yAxisLabel={'$'}
+            chartConfig={chartConfig}
+            bezier
+          />
+        </>}
       </ScrollView>
     )
   }
