@@ -49,6 +49,9 @@ export default class Spendings extends React.Component {
 						flex: 1,
 						padding: 10,
 					}}
+					contentContainerStyle={{
+						paddingBottom: 70,
+					}}
 					refreshControl={
 						<RefreshControl
 							refreshing={spendingsFetching}

@@ -8,6 +8,10 @@ export const AddButton = styled.TouchableOpacity`
 	align-items: center;
 	justify-content: center;
 	border-radius: 5px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
 `
 
 export const AddButtonText = styled.Text`
