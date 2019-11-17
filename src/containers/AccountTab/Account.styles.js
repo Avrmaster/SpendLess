@@ -27,14 +27,15 @@ export const LottieProfile = styled(LottieView)`
 export const FeaturedText = styled(Text)`
 	font-size: 20px;
 	text-align: center;
-	margin: 80px 0 30px;
+	margin: 20px 0 30px;
 	font-style: italic;
 `
 
 export const FeaturedTextHeader = styled(Text)`
-	font-size: 20px;
+	font-size: 25px;
 	text-align: center;
-	font-style: italic;
+	font-style: normal;
+	font-weight: 700;
 	margin-top: 20px;
 `
 

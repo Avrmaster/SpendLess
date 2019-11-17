@@ -28,3 +28,5 @@ export const createWishItem = (userId, name, price, photo_url) =>
 
 export const createSpendItem = (item) =>
 	clientApi.app_items_create({ item })
+
+export const getPieChart = userId => clientApi.app_charts_get_pie_chart_data({fromUser: { id: userId }})

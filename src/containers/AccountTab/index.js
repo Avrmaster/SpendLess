@@ -7,6 +7,7 @@ function mapStateToProps(state) {
 
 	return {
 		user: state.earn.user,
+		subcategories: state.earn.subcategories,
 	}
 }
 
