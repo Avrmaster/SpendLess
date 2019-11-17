@@ -12,7 +12,7 @@ export default class WishlistItem extends PureComponent {
 		return (
 			<Wrapper activeOpacity={0.8}>
 				<ItemImage source={{ uri: photo_url }} />
-				<ProgressbarStyled progress={progress || 0} />
+				{/*<ProgressbarStyled progress={progress || 0} />*/}
 				<ContentWrapper>
 					<ItemName>{name}</ItemName>
 					<ItemPrice>${price}</ItemPrice>
