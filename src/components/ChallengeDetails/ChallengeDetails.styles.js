@@ -7,17 +7,8 @@ export const Container = styled.View`
 	background-color: white;
 	flex-direction: column;
 	justify-content: space-between;
-	padding: 30px;
+	margin: 15px;
 	border-radius: 5px;
-	
-	shadow-color: #a3a3a3;
-	shadow-offset: 0px 5px;
-	shadow-opacity: 0.5;
-	shadow-radius: 10;
-	elevation: 1px;
-	
-	border-bottom-color: ${({ underline }) => underline};
-	border-bottom-width: 4px;
 `
 
 export const Row = styled.View`
@@ -31,18 +22,22 @@ export const Name = styled(Text)`
 	font-weight: 400;
 	text-align: center;
 	flex: 1;
-	font-style: italic;
 `
 
 export const Description = styled(Text)`
 	font-size: 16px;
-	padding-top: 50px;
+	margin-vertical: 30px;
 	color: #A3A3A3;
+`
+
+export const Col = styled.View`
+	
 `
 
 export const Difficulty = styled(Text)`
 	font-size: 18px;
 	margin-top: 10px;
+	margin-bottom: 15px;
 	font-style: italic;
 	text-align: center;
 `
@@ -51,7 +46,6 @@ export const Price = styled(Text)`
 	flex: 1;
 	font-size: 40px;
 	text-align: center;
-	margin-vertical: 20px;
 	color: ${Colors.beautifulGreen};
 `
 
@@ -71,8 +65,30 @@ export const ApplyText = styled(Text)`
 	font-size: 26px;
 `
 
+export const HorizontalSeparator = styled.View`
+	background-color: ${({color}) => color};
+	height: 2px;
+	width: 100%;
+`
+
 export const EarningText = styled(Text)`
 	flex: 1;
 	text-align: center;
 	font-size: 45px;
+`
+
+export const ProgressHolder = styled.View`
+	flex-direction: row;
+	justify-content: space-between;
+`
+
+export const ProgressText = styled(Text)`
+	font-size: 20px;
+`
+
+export const CategoryText = styled(Text)`
+	width: 100%;
+	font-size: 30px;
+	text-align: center;
+	margin: 20px 0;
 `
