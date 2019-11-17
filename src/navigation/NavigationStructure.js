@@ -16,7 +16,7 @@ import {
 	ChallengeDetailsPage,
 	WishlistTab,
 	AccountTab,
-	SpendingDetailsPage
+	SpendingDetailsPage,
 } from 'containers'
 
 export default createBottomTabNavigator(
@@ -54,7 +54,7 @@ export default createBottomTabNavigator(
 		tabBarOptions: {
 			style: {
 				height: 65,
-			}
+			},
 		},
 		defaultNavigationOptions: ({ navigation }) => ({
 			tabBarIcon: ({ focused, tintColor }) => {
@@ -63,9 +63,9 @@ export default createBottomTabNavigator(
 				if (routeName === 'Spendings') {
 					return <FontAwesome5 name={'money-check-alt'} size={30} color={tintColor}/>
 				} else if (routeName === 'Challenges') {
-					return <MaterialCommunityIcons name={'playlist-star'} size={45} color={tintColor}/>
+					return <MaterialCommunityIcons name={'playlist-star'} size={45} color={tintColor} style={{ marginLeft: 3 }}/>
 				} else if (routeName === 'Wishlist') {
-					return <Octicons name={'checklist'} size={30} color={tintColor}/>
+					return <Octicons name={'checklist'} size={30} color={tintColor} style={{ marginLeft: 8 }}/>
 				}
 
 				return <AntDesign name={'user'} size={35} color={tintColor}/>
