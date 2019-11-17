@@ -4,11 +4,23 @@ import Colors from '../../themes/Colors'
 import { Picker } from 'react-native'
 
 export const Container = styled.View`
-	background-color: white;
+	background-color: ${Colors.background};
 	flex-direction: column;
 	justify-content: space-between;
-	margin: 15px;
 	border-radius: 5px;
+`
+
+export const Block = styled.View`
+	margin-horizontal: 20px;
+	margin-top: 20px;
+	border-radius: 10px;
+	background-color: white;
+	
+	shadow-color: #a3a3a3;
+	shadow-offset: 0px 5px;
+	shadow-opacity: 0.2;
+	shadow-radius: 2;
+	elevation: 1px;
 `
 
 export const Row = styled.View`
@@ -17,16 +29,17 @@ export const Row = styled.View`
 	align-items: center;
 `
 
-export const Name = styled(Text)`
+export const ChallengeName = styled(Text)`
 	font-size: 45px;
 	font-weight: 400;
+	margin-vertical: 20px;
 	text-align: center;
 	flex: 1;
 `
 
 export const Description = styled(Text)`
 	font-size: 16px;
-	margin-vertical: 30px;
+	margin: 30px;
 	color: #A3A3A3;
 `
 
@@ -36,15 +49,14 @@ export const Col = styled.View`
 
 export const Difficulty = styled(Text)`
 	font-size: 18px;
-	margin-top: 10px;
-	margin-bottom: 15px;
+	margin: 15px;
 	font-style: italic;
-	text-align: center;
+	text-align: left;
 `
 
 export const Price = styled(Text)`
-	flex: 1;
 	font-size: 40px;
+	margin: 10px;
 	text-align: center;
 	color: ${Colors.beautifulGreen};
 `
@@ -54,7 +66,7 @@ export const WishPicker = styled(Picker)`
 `
 
 export const ApplyButton = styled.TouchableOpacity`
-	margin-top: 50px;
+	margin: 10px;
 	padding: 10px;
 	align-items: center;
 `
@@ -66,7 +78,7 @@ export const ApplyText = styled(Text)`
 `
 
 export const HorizontalSeparator = styled.View`
-	background-color: ${({color}) => color};
+	background-color: ${({ color }) => color};
 	height: 2px;
 	width: 100%;
 `
@@ -79,6 +91,7 @@ export const EarningText = styled(Text)`
 
 export const ProgressHolder = styled.View`
 	flex-direction: row;
+	padding: 10px;
 	justify-content: space-between;
 `
 

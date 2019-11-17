@@ -6,7 +6,7 @@ import {
 	Container,
 	Row,
 	Col,
-	Name,
+	ChallengeName,
 	Description,
 	Difficulty,
 	Price,
@@ -14,6 +14,7 @@ import {
 	ApplyText,
 	WishPicker,
 	EarningText,
+	Block,
 
 	HorizontalSeparator,
 	ProgressHolder,
@@ -33,7 +34,7 @@ export default class ChallengeBrief extends React.Component {
 	render() {
 		const {
 			applied,
-			name,
+			name: challengeName,
 			full_description,
 			difficulty,
 			earn_amount,
@@ -52,141 +53,139 @@ export default class ChallengeBrief extends React.Component {
 			<Container
 				underline={subColor}
 			>
-				<Name key={Math.random()}>
-					{name}
-				</Name>
-				<Difficulty
-					children={difficulty}
-				/>
-				<HorizontalSeparator
-					color={subColor}
-				/>
-				<Description
-					children={full_description}
-				/>
-				<Price
-					style={{
-						fontSize: 20,
-						marginBottom: 0,
-					}}
-					children={'Potential earn:'}
-				/>
-				<Price
-					style={{
-						marginTop: 0,
-					}}
-					children={formatPrice(earn_amount)}
-				/>
-				<HorizontalSeparator
-					style={{ marginTop: 10 }}
-					color={subColor}
-				/>
-				{
-					applied
-						? (
-							<CategoryText>
-								{this.state.selectedWishItem?.name}
-							</CategoryText>
-						)
-						: (
-							<Row>
-								<EarningText>
-									{
-										this.state.selectedWishItem
-											? (Math.min(
-											100 * earn_amount / this.state.selectedWishItem?.price || 0, 100,
-											)).toFixed(1)
-											: '-- '
-									}%
-								</EarningText>
-								<WishPicker
-									enabled={!applied}
-									selectedValue={this.state.selectedWishItem?.id}
-									onValueChange={(selectedWishItem, selectedIndex) => {
-										this.setState({ selectedWishItem: wishlist[selectedIndex - 1] })
-									}}
-								>
-									<WishPicker.Item
-										label={`Nothing`}
-										value={0}
-									/>
-									{
-										wishlist
-											.map(
-												wishItem => (
-													<WishPicker.Item
-														key={wishItem.id}
-														label={`${wishItem.name}`}
-														value={wishItem.id}
-													/>
-												),
-											)
-									}
-								</WishPicker>
-							</Row>
-						)
-				}
-				<HorizontalSeparator
-					style={{ marginVertical: 30 }}
-					color={subColor}
-				/>
-				<ProgressHolder>
-					<ProgressText>
-						{`Time`}
-					</ProgressText>
-					<ProgressCircle
-						percent={timeProgress}
-						radius={50}
-						borderWidth={8}
-						color={subColor}
-						shadowColor="#999"
-						bgColor="#fff"
-					>
-						<ProgressText>{timeProgress}%</ProgressText>
-					</ProgressCircle>
-					<ProgressCircle
-						percent={priceProgress}
-						radius={50}
-						borderWidth={8}
-						color={subColor}
-						shadowColor="#999"
-						bgColor="#fff"
-					>
-						<ProgressText>{priceProgress}%</ProgressText>
-					</ProgressCircle>
-					<ProgressText>
-						{`Price`}
-					</ProgressText>
-				</ProgressHolder>
-				<HorizontalSeparator
-					style={{ marginVertical: 30 }}
-					color={subColor}
-				/>
-				<ApplyButton onPress={() => {
-					if (applied) {
-						this.props.onUnapply()
-					} else {
-						this.props.onApply(this.state.selectedWishItem?.id)
-					}
-				}}>
+				<Block>
+					<ChallengeName key={Math.random()}>
+						{challengeName}
+					</ChallengeName>
+				</Block>
+				<Block>
+					<Description
+						children={full_description}
+					/>
+					<Row>
+						<Difficulty
+							children={difficulty}
+						/>
+						<Price
+							style={{
+								marginTop: 0,
+							}}
+							children={formatPrice(earn_amount)}
+						/>
+					</Row>
+				</Block>
+				<Block>
 					{
 						applied
 							? (
-								<ApplyText
-									style={{
-										color: Colors.beautifulRed,
-									}}
-								>
-									Unapply
-								</ApplyText>
+								<CategoryText>
+									{this.state.selectedWishItem?.name}
+								</CategoryText>
 							)
 							: (
-								<ApplyText>
-									Apply
-								</ApplyText>
+								<Row>
+									<EarningText>
+										{
+											this.state.selectedWishItem
+												? (Math.min(
+												100 * earn_amount / this.state.selectedWishItem?.price || 0, 100,
+												)).toFixed(1)
+												: '-- '
+										}%
+									</EarningText>
+									<WishPicker
+										enabled={!applied}
+										selectedValue={this.state.selectedWishItem?.id}
+										onValueChange={(selectedWishItem, selectedIndex) => {
+											this.setState({ selectedWishItem: wishlist[selectedIndex - 1] })
+										}}
+									>
+										<WishPicker.Item
+											label={`Nothing`}
+											value={0}
+										/>
+										{
+											wishlist
+												.map(
+													wishItem => (
+														<WishPicker.Item
+															key={wishItem.id}
+															label={`${wishItem.name}`}
+															value={wishItem.id}
+														/>
+													),
+												)
+										}
+									</WishPicker>
+								</Row>
 							)
 					}
-				</ApplyButton>
+				</Block>
+				{
+					applied && (
+						<Block>
+							<ProgressHolder>
+								<ProgressText>
+									{`Time`}
+								</ProgressText>
+								<ProgressCircle
+									percent={timeProgress}
+									radius={50}
+									borderWidth={8}
+									color={subColor}
+									shadowColor="#999"
+									bgColor="#fff"
+								>
+									<ProgressText>{timeProgress}%</ProgressText>
+								</ProgressCircle>
+								<ProgressCircle
+									percent={priceProgress}
+									radius={50}
+									borderWidth={8}
+									color={subColor}
+									shadowColor="#999"
+									bgColor="#fff"
+								>
+									<ProgressText>{priceProgress}%</ProgressText>
+								</ProgressCircle>
+								<ProgressText>
+									{`Price`}
+								</ProgressText>
+							</ProgressHolder>
+						</Block>
+					)
+				}
+				<Block
+					style={{
+						marginBottom: 20,
+					}}
+				>
+					<ApplyButton onPress={() => {
+						if (applied) {
+							this.props.onUnapply()
+						} else {
+							this.props.onApply(this.state.selectedWishItem?.id)
+						}
+					}}>
+						{
+							applied
+								? (
+									<ApplyText
+										style={{
+											color: Colors.beautifulRed,
+										}}
+									>
+										Unapply
+									</ApplyText>
+								)
+								: (
+									<ApplyText>
+										Apply
+									</ApplyText>
+								)
+						}
+					</ApplyButton>
+				</Block>
 			</Container>
 		)
 	}
