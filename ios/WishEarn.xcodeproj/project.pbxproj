@@ -484,7 +484,7 @@
 				DEVELOPMENT_TEAM = ZFBF8A8G46;
 				INFOPLIST_FILE = WishEarn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -509,7 +509,7 @@
 				DEVELOPMENT_TEAM = ZFBF8A8G46;
 				INFOPLIST_FILE = WishEarn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

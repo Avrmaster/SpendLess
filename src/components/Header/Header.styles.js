@@ -5,7 +5,7 @@ import Text from 'components/Text'
 import Colors from '../../themes/Colors'
 
 export const Container = styled.View`
-	padding-top: ${ifIphoneX(50, 0)}px;
+	padding-top: ${ifIphoneX(50, 20)}px;
 	justify-content: flex-end;
 	position: relative;
 `
