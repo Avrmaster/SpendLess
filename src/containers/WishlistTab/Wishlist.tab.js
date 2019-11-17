@@ -72,6 +72,7 @@ export default class Wishlist extends React.Component {
         <ScrollView
           refreshControl={
             <RefreshControl
+              tintColor={Colors.main}
               refreshing={wishListFetching}
               onRefresh={this.getWishList}
             />
