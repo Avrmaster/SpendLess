@@ -51,19 +51,24 @@ export default createBottomTabNavigator(
 		Account: withBarStyleListener(AccountTab, 'light-content'),
 	}, {
 		lazy: false,
+		tabBarOptions: {
+			style: {
+				height: 65,
+			}
+		},
 		defaultNavigationOptions: ({ navigation }) => ({
 			tabBarIcon: ({ focused, tintColor }) => {
 				const { routeName } = navigation.state
 
 				if (routeName === 'Spendings') {
-					return <FontAwesome5 name={'money-check-alt'} size={25} color={tintColor}/>
+					return <FontAwesome5 name={'money-check-alt'} size={30} color={tintColor}/>
 				} else if (routeName === 'Challenges') {
-					return <MaterialCommunityIcons name={'playlist-star'} size={25} color={tintColor}/>
+					return <MaterialCommunityIcons name={'playlist-star'} size={45} color={tintColor}/>
 				} else if (routeName === 'Wishlist') {
-					return <Octicons name={'checklist'} size={25} color={tintColor}/>
+					return <Octicons name={'checklist'} size={30} color={tintColor}/>
 				}
 
-				return <AntDesign name={'user'} size={25} color={tintColor}/>
+				return <AntDesign name={'user'} size={35} color={tintColor}/>
 			},
 		}),
 		order: ['Spendings', 'Challenges', 'Wishlist', 'Account'],
