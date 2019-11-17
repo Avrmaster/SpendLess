@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler'
 import { AppRegistry } from 'react-native'
 import * as PropTypes from 'prop-types'
 
@@ -6,9 +7,11 @@ import App from 'containers/App'
 PropTypes.component = PropTypes.oneOfType([
 	PropTypes.func,
 	PropTypes.string,
-	PropTypes.shape({render: PropTypes.func.isRequired}),
+	PropTypes.shape({ render: PropTypes.func.isRequired }),
 ])
-
+String.prototype.capitalize = function () {
+	return this.charAt(0).toUpperCase() + this.slice(1)
+}
 import { name as appName } from './app.json'
 
 XMLHttpRequest = global.originalXMLHttpRequest
