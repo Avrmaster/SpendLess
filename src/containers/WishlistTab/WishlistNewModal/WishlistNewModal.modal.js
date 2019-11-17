@@ -16,7 +16,7 @@ import AvatarUtils from '../../../helpers/AvatarUtils'
 export default function WishlistNewModal(props) {
 	const [loading, setLoading] = React.useState(false)
 	const [name, setName] = React.useState('')
-	const [price, setPrice] = React.useState(0)
+	const [price, setPrice] = React.useState('')
 	const [imageLink, setImageLink] = React.useState('')
 	return (
 		<View>

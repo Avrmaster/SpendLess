@@ -26,8 +26,9 @@ export const createWishItem = (userId, name, price, photo_url) =>
     },
   })
 
-export const createSpendItem = (item) =>
-  clientApi.app_items_create({item})
+export const deleteWishListItem = (itemId) => clientApi.app_wishlist_delete({itemId: itemId})
+
+export const createSpendItem = (item) => clientApi.app_items_create({item})
 
 export const getPieChart = userId => clientApi.app_charts_get_pie_chart_data({fromUser: {id: userId}})
 export const getCategoryChart = (userId, categoryId) => clientApi.app_charts_get_line_chart_data({

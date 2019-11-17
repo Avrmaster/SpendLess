@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import { Text } from 'components';
 import Progressbar from 'components/Progressbar';
+import {Colors} from '../../themes';
 
 export const Wrapper = styled(TouchableOpacity)`
   margin-bottom: 15px;
@@ -13,6 +14,7 @@ export const Wrapper = styled(TouchableOpacity)`
   box-shadow: 0 5px 10px rgba(163,163,163,0.5);
   border-radius: 5px;
   width: 100%;
+  position:relative;
 `;
 
 export const ItemImage = styled(Image)`
@@ -45,3 +47,31 @@ export const ItemPrice = styled(Text)`
 export const ProgressbarStyled = styled(Progressbar)`
   margin: 10px 15px 0;
 `;
+
+export const OverlapWrapper = styled.View`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+`
+
+export const ButtonDelete = styled.TouchableOpacity`
+  height: 40px;
+  max-width: 200px;
+  width: 100%;
+  background: #db3030;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+`
+
+export const ButtonDeleteText = styled(Text)`
+  color: white;
+  font-weight: 600;
+  font-size: 22px;
+`
