@@ -64,7 +64,7 @@ export default class ChallengeBrief extends React.Component {
 					/>
 					<Row>
 						<Difficulty
-							children={difficulty}
+							children={difficulty.capitalize()}
 						/>
 						<Price
 							style={{
