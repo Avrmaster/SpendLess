@@ -32,7 +32,7 @@ export const ContentWrapper = styled.View`
 export const PriceWrapper = styled.View`
 	align-items: center;
 	justify-content: center;
-	min-width: 15%;
+	min-width: 20%;
 	padding: 5px;
 `
 
