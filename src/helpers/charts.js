@@ -15,7 +15,6 @@ export function mapPieData(data, subcategories) {
   if (data == null) {
     return null
   }
-  console.log(subcategories)
   return data.map((item, i) => {
     return {
       name: item[1],

@@ -16,7 +16,7 @@ import { getPieChart } from '../../api/Api'
 import { PieChart } from 'react-native-chart-kit'
 import { getChartConfig, mapPieData } from '../../helpers/charts'
 
-export default class Tab1 extends React.Component {
+export default class AccountTab extends React.Component {
   state = {
     pieData: null,
   }
@@ -85,13 +85,11 @@ export default class Tab1 extends React.Component {
               <PieChart
                 data={this.state.pieData}
                 width={Dimensions.get('window').width}
-                height={200}
+                height={220}
                 chartConfig={getChartConfig(Colors.main)}
                 accessor="pieChartData"
                 backgroundColor="transparent"
-                paddingLeft="5"
 								style={{marginBottom: 20}}
-                absolute
               />
             </>
           }

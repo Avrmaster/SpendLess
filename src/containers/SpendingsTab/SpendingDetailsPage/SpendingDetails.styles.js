@@ -10,6 +10,7 @@ export const Name = styled(Text)`
 	font-size: 30px;
 	font-weight: 600;
 	margin-bottom: 20px;
+	margin-top: 5px;
 `
 
 export const TextDefault = styled(Text)`
@@ -25,5 +26,5 @@ export const TextBold = styled(Text)`
 export const Row = styled(View)`
 	flex-direction: row;
 	align-items: flex-end;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 `

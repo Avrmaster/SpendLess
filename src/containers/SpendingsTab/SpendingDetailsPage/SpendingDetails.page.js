@@ -10,7 +10,6 @@ import { Container, Name, Row, TextBold, TextDefault } from './SpendingDetails.s
 import {
   LineChart,
   BarChart,
-  PieChart,
   ProgressChart,
   ContributionGraph,
   StackedBarChart,
@@ -21,49 +20,25 @@ const barData = {
   labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
   datasets: [
     {
-      data: [20, 45, 28, 80, 99, 43],
+      data: [Math.random() * 100,
+				Math.random() * 100,
+				Math.random() * 100,
+				Math.random() * 100,
+				Math.random() * 100,
+				Math.random() * 100],
       strokeWidth: 2, // optional
     },
   ],
 }
 
-const pieData = [
-  {
-    name: 'Seoul',
-    population: 21500000,
-    color: 'rgba(131, 167, 234, 1)',
-    legendFontColor: '#7F7F7F',
-    legendFontSize: 13,
-  },
-  {
-    name: 'Toronto',
-    population: 2800000,
-    color: '#F00',
-    legendFontColor: '#7F7F7F',
-    legendFontSize: 13,
-  },
-  {
-    name: 'Beijing',
-    population: 527612,
-    color: 'red',
-    legendFontColor: '#7F7F7F',
-    legendFontSize: 13,
-  },
-  {
-    name: 'New York',
-    population: 8538000,
-    color: '#ffffff',
-    legendFontColor: '#7F7F7F',
-    legendFontSize: 13,
-  },
-  {
-    name: 'Moscow',
-    population: 11920000,
-    color: 'rgb(0, 0, 255)',
-    legendFontColor: '#7F7F7F',
-    legendFontSize: 13,
-  },
-]
+const graphStyle = {
+	marginVertical: 5,
+	borderRadius: 10,
+	marginLeft: "auto",
+	marginRight: "auto",
+}
+const graphHeight = 230
+
 
 export default class SpendingDetailsPage extends React.Component {
   goBack = createBackNavigation(this)
@@ -77,13 +52,7 @@ export default class SpendingDetailsPage extends React.Component {
 
   render() {
     const chartConfig = getChartConfig(this.state.item.sub_category.category.color)
-
-    const graphStyle = {
-      marginVertical: 10,
-    }
-
-    const graphWidth = Dimensions.get('window').width
-    const height = 240
+    const graphWidth = Dimensions.get('window').width * 0.95
 
     return (
       <ScrollView
@@ -117,7 +86,7 @@ export default class SpendingDetailsPage extends React.Component {
           style={graphStyle}
           data={barData}
           width={graphWidth}
-          height={height}
+          height={graphHeight}
           yAxisLabel={'$'}
           chartConfig={chartConfig}
         />
@@ -126,7 +95,7 @@ export default class SpendingDetailsPage extends React.Component {
           style={graphStyle}
           data={barData}
           width={graphWidth}
-          height={height}
+          height={graphHeight}
           yAxisLabel={'$'}
           chartConfig={chartConfig}
           bezier
