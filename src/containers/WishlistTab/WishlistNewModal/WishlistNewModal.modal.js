@@ -12,6 +12,7 @@ import {
 	ImageItself,
 } from './WishlistNewModal.styles'
 import AvatarUtils from '../../../helpers/AvatarUtils'
+import Colors from '../../../themes/Colors'
 
 export default function WishlistNewModal(props) {
 	const [loading, setLoading] = React.useState(false)
@@ -29,6 +30,7 @@ export default function WishlistNewModal(props) {
 					keyboardShouldPersistTaps={'handled'}
 					refreshControl={
 						<RefreshControl
+							tintColor={Colors.main}
 							refreshing={loading}
 						/>
 					}

@@ -45,6 +45,7 @@ export default class ChallengesTab extends React.Component {
 					}}
 					refreshControl={
 						<RefreshControl
+							tintColor={Colors.main}
 							refreshing={challengesFetching}
 							onRefresh={this.getChallenges}
 						/>

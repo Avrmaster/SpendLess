@@ -54,6 +54,7 @@ export default class Spendings extends React.Component {
 					}}
 					refreshControl={
 						<RefreshControl
+							tintColor={Colors.main}
 							refreshing={spendingsFetching}
 							onRefresh={this.getSpendings}
 						/>
