@@ -42,7 +42,12 @@ export default class ChallengeBrief extends React.Component {
 						/>
 					}
 					<ChallengeImage
-						source={{ uri: photo_url }}
+						source={{
+							uri:
+								photo_url
+								||
+								'https://www.namepros.com/a/2018/05/106343_82907bfea9fe97e84861e2ee7c5b4f5b.png',
+						}}
 					/>
 					<Name
 						children={name}

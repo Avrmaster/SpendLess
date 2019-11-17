@@ -1,51 +1,91 @@
 import React from 'react'
 import * as PropTypes from 'prop-types'
 
-import { Modal, View, ScrollView, Button } from 'react-native'
+import { Modal, View, Button, RefreshControl } from 'react-native'
 import { TopWrapper } from '../Wishlist.styles'
-import { InputText, InputWrapper, ModalTextInput, ModalWrapper } from './WishlistNewModal.styles'
+import {
+	InputText,
+	InputWrapper,
+	ModalTextInput,
+	ModalWrapper,
+	TouchableImageHandler,
+	ImageItself,
+} from './WishlistNewModal.styles'
+import AvatarUtils from '../../../helpers/AvatarUtils'
 
 export default function WishlistNewModal(props) {
-  const [name, setName] = React.useState('')
-  const [price, setPrice] = React.useState(0)
-  const [imageLink, setImageLink] = React.useState('')
-  return (
-    <View>
-      <Modal
-        animationType="slide"
-        transparent={false}
-        visible={props.modalVisible}
-      >
-        <ModalWrapper
-          keyboardShouldPersistTaps={'handled'}
-        >
-          <TopWrapper style={{marginBottom: 15}}>
-            <Button title={'Close'} onPress={() => props.hideModal()} />
-            <Button title={'Submit'} onPress={() => props.onSubmit(name, price, imageLink)} />
-          </TopWrapper>
+	const [loading, setLoading] = React.useState(false)
+	const [name, setName] = React.useState('')
+	const [price, setPrice] = React.useState(0)
+	const [imageLink, setImageLink] = React.useState('')
+	return (
+		<View>
+			<Modal
+				animationType="slide"
+				transparent={false}
+				visible={props.modalVisible}
+			>
+				<ModalWrapper
+					keyboardShouldPersistTaps={'handled'}
+					refreshControl={
+						<RefreshControl
+							refreshing={loading}
+						/>
+					}
+				>
+					<TopWrapper style={{ marginBottom: 15 }}>
+						<Button title={'Close'} onPress={() => props.hideModal()}/>
+						<Button title={'Submit'} onPress={() => {
+							if (!name?.length || !price || !imageLink?.length) {
+								alert('Fill required fields!')
+								return
+							}
 
-          <InputWrapper>
-            <InputText>Name</InputText>
-            <ModalTextInput value={name} onChangeText={setName} editable />
-          </InputWrapper>
+							props.onSubmit(name, price, imageLink)
+						}}/>
+					</TopWrapper>
 
-          <InputWrapper>
-            <InputText>Price (in $)</InputText>
-            <ModalTextInput value={price.toString()} onChangeText={setPrice} editable keyboardType={'numeric'} />
-          </InputWrapper>
+					<InputWrapper>
+						<InputText>Name</InputText>
+						<ModalTextInput value={name} onChangeText={setName} editable/>
+					</InputWrapper>
 
-          <InputWrapper>
-            <InputText>Image link</InputText>
-            <ModalTextInput value={imageLink} onChangeText={setImageLink} editable />
-          </InputWrapper>
-        </ModalWrapper>
-      </Modal>
-    </View>
-  )
+					<InputWrapper>
+						<InputText>Price (in $)</InputText>
+						<ModalTextInput value={price.toString()} onChangeText={setPrice} editable keyboardType={'numeric'}/>
+					</InputWrapper>
+
+					<TouchableImageHandler
+						activeOpacity={0.8}
+						onPress={() => {
+							AvatarUtils.changeAvatar(({
+								source: 'gallery',
+								onUpdateAvatarURI: (uri) => {
+									setImageLink(uri)
+								},
+								onSetFetching: (isFetching) => {
+									setLoading(isFetching)
+								},
+							}))
+						}}
+					>
+						<ImageItself
+							source={{
+								uri: imageLink
+									||
+									'https://www.namepros.com/a/2018/05/106343_82907bfea9fe97e84861e2ee7c5b4f5b.png',
+							}}
+						/>
+					</TouchableImageHandler>
+
+				</ModalWrapper>
+			</Modal>
+		</View>
+	)
 }
 
 WishlistNewModal.propTypes = {
-  hideModal: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  modalVisible: PropTypes.bool.isRequired,
+	hideModal: PropTypes.func.isRequired,
+	onSubmit: PropTypes.func.isRequired,
+	modalVisible: PropTypes.bool.isRequired,
 }
