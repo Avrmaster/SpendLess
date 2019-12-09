@@ -1,8 +1,10 @@
 import styled from 'styled-components/native'
-import {Picker} from 'react-native'
+import { Picker } from 'react-native'
 
 import Text from 'components/Text'
 import Colors from '../../themes/Colors'
+
+import { TouchableOpacity, Image, View } from 'react-native'
 
 export const Container = styled.KeyboardAvoidingView`
 	width: 93%;
@@ -31,7 +33,7 @@ export const CategoryPicker = styled(Picker)`
 	
 `
 
-export const CreateButton = styled.TouchableOpacity`
+export const CreateButton = styled(TouchableOpacity)`
 	background-color: ${Colors.main};
 	padding: 20px;
 	align-items: center;

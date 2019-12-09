@@ -3,14 +3,16 @@ import Text from 'components/Text'
 import Colors from '../../themes/Colors'
 import { Picker } from 'react-native'
 
-export const Container = styled.View`
+import { View, TouchableOpacity } from 'react-native'
+
+export const Container = styled(View)`
 	background-color: ${Colors.background};
 	flex-direction: column;
 	justify-content: space-between;
 	border-radius: 5px;
 `
 
-export const Block = styled.View`
+export const Block = styled(View)`
 	margin-horizontal: 20px;
 	margin-top: 20px;
 	border-radius: 10px;
@@ -23,7 +25,7 @@ export const Block = styled.View`
 	elevation: 1px;
 `
 
-export const Row = styled.View`
+export const Row = styled(View)`
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
@@ -43,7 +45,7 @@ export const Description = styled(Text)`
 	color: #A3A3A3;
 `
 
-export const Col = styled.View`
+export const Col = styled(View)`
 	
 `
 
@@ -65,7 +67,7 @@ export const WishPicker = styled(Picker)`
 	flex: 1;
 `
 
-export const ApplyButton = styled.TouchableOpacity`
+export const ApplyButton = styled(TouchableOpacity)`
 	margin: 10px;
 	padding: 10px;
 	align-items: center;
@@ -77,7 +79,7 @@ export const ApplyText = styled(Text)`
 	font-size: 26px;
 `
 
-export const HorizontalSeparator = styled.View`
+export const HorizontalSeparator = styled(View)`
 	background-color: ${({ color }) => color};
 	height: 2px;
 	width: 100%;
@@ -89,7 +91,7 @@ export const EarningText = styled(Text)`
 	font-size: 45px;
 `
 
-export const ProgressHolder = styled.View`
+export const ProgressHolder = styled(View)`
 	flex-direction: row;
 	padding: 10px;
 	justify-content: space-between;

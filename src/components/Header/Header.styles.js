@@ -4,7 +4,9 @@ import { ifIphoneX } from 'react-native-iphone-x-helper'
 import Text from 'components/Text'
 import Colors from '../../themes/Colors'
 
-export const Container = styled.View`
+import { View, TouchableOpacity } from 'react-native'
+
+export const Container = styled(View)`
 	padding-top: ${ifIphoneX(50, 20)}px;
 	justify-content: flex-end;
 	position: relative;
@@ -18,11 +20,11 @@ export const Title = styled(Text)`
 	color: white;
 `
 
-export const LeftButtonHolder = styled.TouchableOpacity`
+export const LeftButtonHolder = styled(TouchableOpacity)`
 	padding: 0 10px;
 `
 
-export const RightComponentHolder = styled.View`
+export const RightComponentHolder = styled(View)`
   position: absolute;
   bottom: 10px;
   right: 15px;
@@ -35,7 +37,7 @@ export const LeftIcon = styled(AwesomeIcon)`
 export const ImageHeaderMinHeight = ifIphoneX(100, 70)
 export const ImageHeaderMaxHeight = 230
 
-export const ImageHeader = styled.Image`
+export const ImageHeader = styled(Image)`
 	width: 100%;
 	height: ${ImageHeaderMaxHeight}px;
 `

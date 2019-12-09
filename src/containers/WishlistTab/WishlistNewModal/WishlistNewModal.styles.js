@@ -1,5 +1,7 @@
 import styled from 'styled-components/native'
-import { Text } from 'components'
+import Text from 'components/Text'
+
+import { View, TouchableOpacity } from 'react-native'
 
 export const ModalWrapper = styled.ScrollView`
   padding: 40px 15px 0;  
@@ -18,18 +20,18 @@ export const InputText = styled(Text)`
   color: #747474;
 `
 
-export const InputWrapper = styled.View`
+export const InputWrapper = styled(View)`
   margin-bottom: 25px;
 `
 
-export const TouchableImageHandler = styled.TouchableOpacity`
+export const TouchableImageHandler = styled(TouchableOpacity)`
 	width: 100%;
 	height: 200px;
 	justify-content: center;
 	align-items: center;
 `
 
-export const ImageItself = styled.Image`
+export const ImageItself = styled(Image)`
 	width: 90%;
 	height: 90%;
 `

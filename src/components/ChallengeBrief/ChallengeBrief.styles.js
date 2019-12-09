@@ -2,7 +2,9 @@ import styled from 'styled-components/native'
 import Text from 'components/Text'
 import Colors from '../../themes/Colors'
 
-export const Container = styled.TouchableOpacity`
+import { TouchableOpacity, Image, View } from 'react-native'
+
+export const Container = styled(TouchableOpacity)`
 	background-color: white;
 	flex-direction: column;
 	justify-content: space-between;
@@ -22,13 +24,13 @@ export const Container = styled.TouchableOpacity`
 	overflow: visible;
 `
 
-export const Row = styled.View`
+export const Row = styled(View)`
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
 `
 
-export const ChallengeImage = styled.Image`
+export const ChallengeImage = styled(Image)`
 	width: 200px;
 	height: 130px;
 `
@@ -63,7 +65,7 @@ export const Category = styled(Text)`
 	font-size: 12px;
 `
 
-export const AppliedStar = styled.Image`
+export const AppliedStar = styled(Image)`
 	position: absolute;
 	top: -15px;
 	left: -15px;

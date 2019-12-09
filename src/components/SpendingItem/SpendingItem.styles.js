@@ -1,7 +1,9 @@
 import styled from 'styled-components/native'
 import Text from 'components/Text'
 
-export const Wrapper = styled.TouchableOpacity`
+import { TouchableOpacity, Image, View } from 'react-native'
+
+export const Wrapper = styled(TouchableOpacity)`
 	background: white;
 	border-radius: 5px;
 	margin-bottom: 10px;
@@ -13,13 +15,13 @@ export const Wrapper = styled.TouchableOpacity`
 	justify-content: space-between;
 `
 
-export const DateWrapper = styled.View`
+export const DateWrapper = styled(View)`
 	align-items: center;
 	justify-content: center;
 	width: 15%;
 `
 
-export const ContentWrapper = styled.View`
+export const ContentWrapper = styled(View)`
 	align-items: flex-start;
 	padding: 0 10px;
 	margin: 10px 0;
@@ -29,7 +31,7 @@ export const ContentWrapper = styled.View`
 	flex: 1;
 `
 
-export const PriceWrapper = styled.View`
+export const PriceWrapper = styled(View)`
 	align-items: center;
 	justify-content: center;
 	min-width: 20%;

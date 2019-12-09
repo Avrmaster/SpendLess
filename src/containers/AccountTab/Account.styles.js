@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 import LottieView from 'lottie-react-native'
-import { Dimensions } from 'react-native'
+import { Dimensions, View } from 'react-native'
 
 import Text from 'components/Text'
 
@@ -39,7 +39,7 @@ export const FeaturedTextHeader = styled(Text)`
 	margin-top: 20px;
 `
 
-export const Row = styled.View`
+export const Row = styled(View)`
 	flex-direction: row;
 	padding: 20px;
 `
