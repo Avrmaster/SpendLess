@@ -1,0 +1,31 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "./node_modules/.bin/webpack-dev-server -d --config ./webpack.config.js --inline --hot --colors"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-react-native-web": "^0.4.0",
+    "babel-preset-expo": "^7.1.0",
+    "file-loader": "^1.1.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
+    "babel-jest": "22.2.2",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "22.3.0",
+    "patch-package": "^6.2.0",
+    "postinstall-prepare": "^1.0.1",
+    "react-test-renderer": "16.2.0",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}

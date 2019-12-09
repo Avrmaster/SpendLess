@@ -1,1 +1,3 @@
-export default from './WishlistItem.component'
+import WishlistItem from './WishlistItem.component'
+
+export default WishlistItem

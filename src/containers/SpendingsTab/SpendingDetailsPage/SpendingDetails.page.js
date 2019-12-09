@@ -7,12 +7,12 @@ import {createBackNavigation} from 'navigation/NavigationStructure'
 import * as PropTypes from 'prop-types'
 import {Container, Name, Row, TextBold, TextDefault} from './SpendingDetails.styles'
 
-import {
-  LineChart,
-  BarChart,
-} from 'react-native-chart-kit'
+// import {
+//   LineChart,
+//   BarChart,
+// } from 'react-native-chart-kit'
 import {getChartConfig} from 'helpers/charts'
-import {getCategoryChart, getSubCategoryChart} from 'api/Api'
+import {getCategoryChart, getSubCategoryChart} from 'apiClient/Api'
 import {Text} from 'components'
 
 const graphStyle = {
@@ -89,30 +89,30 @@ export default class SpendingDetailsPage extends React.Component {
             <TextDefault>${this.state.item.price}</TextDefault>
           </Row>
         </Container>
-        {this.state.chartDataCategory && <>
-          <LineChart
-            style={graphStyle}
-            data={this.state.chartDataCategory}
-            width={graphWidth}
-            height={graphHeight}
-            yAxisLabel={'$'}
-            chartConfig={chartConfig}
-            bezier
-          />
+        {this.state.chartDataCategory && <React.Fragment>
+          {/*<LineChart*/}
+          {/*  style={graphStyle}*/}
+          {/*  data={this.state.chartDataCategory}*/}
+          {/*  width={graphWidth}*/}
+          {/*  height={graphHeight}*/}
+          {/*  yAxisLabel={'$'}*/}
+          {/*  chartConfig={chartConfig}*/}
+          {/*  bezier*/}
+          {/*/>*/}
           <Text style={{textAlign: 'center'}}>Categories chart</Text>
-        </>}
-        {this.state.chartDataSubCategory && <>
-          <LineChart
-            style={graphStyle}
-            data={this.state.chartDataSubCategory}
-            width={graphWidth}
-            height={graphHeight}
-            yAxisLabel={'$'}
-            chartConfig={chartConfig}
-            bezier
-          />
+        </React.Fragment>}
+        {this.state.chartDataSubCategory && <React.Fragment>
+          {/*<LineChart*/}
+          {/*  style={graphStyle}*/}
+          {/*  data={this.state.chartDataSubCategory}*/}
+          {/*  width={graphWidth}*/}
+          {/*  height={graphHeight}*/}
+          {/*  yAxisLabel={'$'}*/}
+          {/*  chartConfig={chartConfig}*/}
+          {/*  bezier*/}
+          {/*/>*/}
           <Text style={{textAlign: 'center'}}>Sub categories chart</Text>
-        </>}
+        </React.Fragment>}
       </ScrollView>
     )
   }

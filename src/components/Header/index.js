@@ -1,4 +1,6 @@
 import React from 'react'
 
-export default from './Header.component'
+import Header from './Header.component'
+
+export default Header
 export { ImageHeader, ImageHeaderMinHeight, ImageHeaderMaxHeight } from './Header.styles'

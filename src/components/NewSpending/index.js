@@ -1,1 +1,3 @@
-export default from './NewSpending.component'
+import NewSpending from './NewSpending.component'
+
+export default NewSpending

@@ -1,1 +1,3 @@
-export default from './EmptyList'
+import EmptyList from './EmptyList'
+
+export default EmptyList

@@ -1,1 +1,3 @@
-export default from './SpendingItem.component'
+import SpendingItem from './SpendingItem.component'
+
+export default SpendingItem

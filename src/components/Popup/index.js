@@ -1,1 +1,3 @@
-export default from './Popup.component'
+import Popup from './Popup.component'
+
+export default Popup

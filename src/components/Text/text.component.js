@@ -2,11 +2,7 @@ import { Platform, StyleSheet, Animated, Text as NativeText } from 'react-native
 import * as PropTypes from 'prop-types'
 import React from 'react'
 
-const Text: {
-	propTypes: {
-		animated?: PropTypes.bool
-	}
-} = React.forwardRef((props, ref) => {
+const Text = React.forwardRef((props, ref) => {
 
 	let defaultFontFamily = 'SF-UI-Text-Regular'
 	if (props.style) {
@@ -31,7 +27,7 @@ const Text: {
 		}
 	}
 
-	const TextComponent = props?.animated
+	const TextComponent = props && props.animated
 		? Animated.Text
 		: NativeText
 
@@ -43,7 +39,7 @@ const Text: {
 			style={[
 				// eslint-disable-next-line react-native/no-inline-styles
 				{
-				  fontFamily: Platform.select({ ios: 'Roboto', android: defaultFontFamily }),
+					fontFamily: Platform.select({ ios: 'Roboto', android: defaultFontFamily }),
 				},
 				props.style,
 				Platform.select({ android: { fontWeight: null, fontStyle: null } }),

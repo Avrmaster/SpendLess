@@ -19,9 +19,9 @@ export function mapPieData(data, subcategories) {
     return {
       name: item[1],
       pieChartData: item[0],
-      color: subcategories
-        .map(({category}) => category)
-        .find(({name}) => item[1] === name)?.color,
+      // color: subcategories
+      //   .map(({category}) => category)
+      //   .find(({name}) => item[1] === name).color,
     }
   })
 }

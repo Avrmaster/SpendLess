@@ -38,10 +38,10 @@ export default function WishlistNewModal(props) {
 					<TopWrapper style={{ marginBottom: 15 }}>
 						<Button title={'Close'} onPress={() => props.hideModal()}/>
 						<Button title={'Submit'} onPress={() => {
-							if (!name?.length || !price || !imageLink?.length) {
-								alert('Fill required fields!')
-								return
-							}
+							// if (!name?.length || !price || !imageLink?.length) {
+							// 	alert('Fill required fields!')
+							// 	return
+							// }
 
 							props.onSubmit(name, price, imageLink)
 						}}/>

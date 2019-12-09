@@ -30,12 +30,12 @@ export const navigationRef = {
 		try {
 			const { _navigation } = navigationRef.ref
 			return _navigation.state.routes[_navigation.state.index].routeName
-		} catch {
+		} catch (e) {
 			return null
 		}
 	},
 	navigateTo: (route, options) => {
-		navigationRef.ref?._navigation?.navigate?.(route, options)
+		// navigationRef.ref?._navigation?.navigate?.(route, options)
 	},
 }
 

@@ -11,7 +11,7 @@ import Colors from '../../themes/Colors'
 import Header from '../../components/Header'
 import {View} from 'react-native'
 import EmptyList from '../../components/EmptyList/EmptyList'
-import {deleteWishListItem} from '../../api/Api'
+import {deleteWishListItem} from '../../apiClient/Api'
 
 
 export default class Wishlist extends React.Component {
@@ -66,7 +66,8 @@ export default class Wishlist extends React.Component {
           </TouchableOpacity>}
         />
         <EmptyList
-          show={!wishListFetching && !wishList?.length && !wishListError}
+          show={false}
+          // show={!wishListFetching && !wishList?.length && !wishListError}
           text={'There is nothing in your Wish list yet. \nClick "+" icon to create new'}
         />
         <ScrollView

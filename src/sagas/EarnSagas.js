@@ -5,10 +5,11 @@ import LottieView from 'lottie-react-native'
 import Text from 'components/Text'
 
 import EarnActions from 'reducers/EarnReducer'
-import * as Api from 'api/Api'
+import * as Api from 'apiClient/Api'
 import { popupRef } from '../containers/App/RootContainer'
 import { LottieCard } from '../containers/AccountTab/Account.styles'
 import Colors from '../themes/Colors'
+import successAnimation from 'assets/animations/3150-success.json'
 
 export function* getChallenges(action) {
 	try {
@@ -85,7 +86,7 @@ export function* createSpendingItem(action) {
 							}}
 							autoPlay
 							loop
-							source={require('../../assets/animations/3150-success')}
+							source={successAnimation}
 						/>
 						<Text
 							style={{

@@ -39,7 +39,7 @@ export default class NewSpending extends React.Component {
             placeholder={'Price..'}
           />
           <CategoryPicker
-            selectedValue={this.state.selectedCategory?.id}
+            selectedValue={this.state.selectedCategory && this.state.selectedCategory.id}
             onValueChange={(_, selectedIndex) => {
               this.setState({selectedCategory: subcategories[selectedIndex]})
             }}
@@ -69,7 +69,7 @@ export default class NewSpending extends React.Component {
             onPress={() => {
               if (
                 !this.state.price ||
-                !this.state.selectedCategory?.id ||
+                !(this.state.selectedCategory && this.state.selectedCategory.id) ||
                 !this.state.name
               ) {
                 alert('Fill required fields!')
@@ -82,7 +82,7 @@ export default class NewSpending extends React.Component {
                 description: this.state.description,
                 amount: 1,
                 date: new Date().toISOString(),
-                sub_category_fk: this.state.selectedCategory?.id,
+                sub_category_fk: this.state.selectedCategory && this.state.selectedCategory.id,
                 user_fk: this.props.user.id,
               })
             }}

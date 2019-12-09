@@ -1,1 +1,3 @@
-export WishlistNewModal from './WishlistNewModal.modal'
+import WishlistNewModal from './WishlistNewModal.modal'
+
+export default WishlistNewModal

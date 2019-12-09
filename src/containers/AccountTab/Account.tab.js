@@ -12,9 +12,12 @@ import {
 } from './Account.styles'
 import Header from '../../components/Header'
 import Colors from '../../themes/Colors'
-import { getPieChart } from '../../api/Api'
-import { PieChart } from 'react-native-chart-kit'
+import { getPieChart } from '../../apiClient/Api'
+// import { PieChart } from 'react-native-chart-kit'
 import { getChartConfig, mapPieData } from '../../helpers/charts'
+import profileAnimation from 'assets/animations/1786-profile.json'
+
+import creditCardAnimation from 'assets/animations/6780-credit-card-reveal.json'
 
 export default class AccountTab extends React.Component {
   state = {
@@ -34,7 +37,7 @@ export default class AccountTab extends React.Component {
 
   render() {
     return (
-      <>
+      <React.Fragment>
         <Header
           title={'Account Information'}
           style={{
@@ -54,7 +57,7 @@ export default class AccountTab extends React.Component {
           </FeaturedTextHeader>
           <Row>
             <LottieProfile
-              source={require('../../../assets/animations/1786-profile')}
+              source={profileAnimation}
               autoPlay
               loop
             />
@@ -74,27 +77,27 @@ export default class AccountTab extends React.Component {
             {`And here you will be able to\nconnect your bank account`}
           </FeaturedText>
           <LottieCard
-            source={require('../../../assets/animations/6780-credit-card-reveal')}
+            source={creditCardAnimation}
             autoPlay
             loop
           />
 
           {
-            (!!this.state.pieData?.length) && <>
+            (!!(this.state.pieData && this.state.pieData.length)) && <React.Fragment>
               <FeaturedTextHeader>Your Statistics</FeaturedTextHeader>
-              <PieChart
-                data={this.state.pieData}
-                width={Dimensions.get('window').width}
-                height={220}
-                chartConfig={getChartConfig(Colors.main)}
-                accessor="pieChartData"
-                backgroundColor="transparent"
-								style={{marginBottom: 20}}
-              />
-            </>
+              {/*<PieChart*/}
+              {/*  data={this.state.pieData}*/}
+              {/*  width={Dimensions.get('window').width}*/}
+              {/*  height={220}*/}
+              {/*  chartConfig={getChartConfig(Colors.main)}*/}
+              {/*  accessor="pieChartData"*/}
+              {/*  backgroundColor="transparent"*/}
+							{/*	style={{marginBottom: 20}}*/}
+              {/*/>*/}
+            </React.Fragment>
           }
         </ScrollView>
-      </>
+      </React.Fragment>
     )
   }
 }

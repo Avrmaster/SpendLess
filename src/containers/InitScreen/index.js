@@ -1,1 +1,3 @@
-export default from './InitScreen.component'
+import InitScreen from './InitScreen.component'
+
+export default InitScreen

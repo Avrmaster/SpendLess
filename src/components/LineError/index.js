@@ -1,1 +1,3 @@
-export default from './LineError.component'
+import LineError from './LineError.component'
+
+export default LineError

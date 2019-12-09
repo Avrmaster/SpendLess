@@ -28,7 +28,7 @@ import Colors from '../../themes/Colors'
 export default class ChallengeBrief extends React.Component {
 
 	state = {
-		selectedWishItem: this.props.challenge.wishlist?.[0],
+		selectedWishItem: this.props.challenge.wishlist && this.props.challenge.wishlist[0],
 	}
 
 	render() {
@@ -80,7 +80,7 @@ export default class ChallengeBrief extends React.Component {
 						applied
 							? (
 								<CategoryText>
-									{this.state.selectedWishItem?.name}
+									{this.state.selectedWishItem && this.state.selectedWishItem.name}
 								</CategoryText>
 							)
 							: (
@@ -89,14 +89,15 @@ export default class ChallengeBrief extends React.Component {
 										{
 											this.state.selectedWishItem
 												? (Math.min(
-												100 * earn_amount / this.state.selectedWishItem?.price || 0, 100,
+													0
+												// 100 * earn_amount / this.state.selectedWishItem?.price || 0, 100,
 												)).toFixed(1)
 												: '-- '
 										}%
 									</EarningText>
 									<WishPicker
 										enabled={!applied}
-										selectedValue={this.state.selectedWishItem?.id}
+										selectedValue={this.state.selectedWishItem && this.state.selectedWishItem.id}
 										onValueChange={(selectedWishItem, selectedIndex) => {
 											this.setState({ selectedWishItem: wishlist[selectedIndex - 1] })
 										}}
@@ -172,7 +173,7 @@ export default class ChallengeBrief extends React.Component {
 						if (applied) {
 							this.props.onUnapply()
 						} else {
-							this.props.onApply(this.state.selectedWishItem?.id)
+							this.props.onApply(this.state.selectedWishItem && this.state.selectedWishItem.id)
 						}
 					}}>
 						{

@@ -1,1 +1,3 @@
-export default from './ChallengeBrief.component'
+import ChallengeBrief from './ChallengeBrief.component'
+
+export default ChallengeBrief

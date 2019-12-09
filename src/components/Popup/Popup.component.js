@@ -37,7 +37,7 @@ export default class Popup extends React.PureComponent {
 		this.appearAnimation.setGoal(this.state.hidden ? 0 : 1)
 
 		return (
-			<>
+			<React.Fragment>
 				<Background
 					pointerEvents={'none'}
 					style={{
@@ -65,7 +65,7 @@ export default class Popup extends React.PureComponent {
 						{this.state.content}
 					</ContentHolder>
 				</ContentContainer>
-			</>
+			</React.Fragment>
 		)
 	}
 }

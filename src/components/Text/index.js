@@ -1,1 +1,3 @@
-export default from './text.component'
+import Text from './text.component'
+
+export default Text

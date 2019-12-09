@@ -41,7 +41,8 @@ export default class Spendings extends React.Component {
 					error={spendingsError}
 				/>
 				<EmptyList
-					show={!spendingsFetching && !spendings?.length && !spendingsError}
+					show={false}
+					// show={!spendingsFetching && !spendings?.length && !spendingsError}
 					text={'Looks like you have not\n added any spendings yet :)\n Click button below to add one'}
 				/>
 				<ScrollView
