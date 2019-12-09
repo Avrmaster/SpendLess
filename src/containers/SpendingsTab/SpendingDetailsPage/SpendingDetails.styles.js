@@ -1,4 +1,4 @@
-import styled from 'styled-components/native/dist/styled-components.native.esm'
+import styled from 'styled-components/native'
 import { Text } from 'components'
 import { View } from 'react-native'
 

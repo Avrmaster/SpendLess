@@ -24,4 +24,4 @@ export const LogoText: Text = styled(Text)`
   text-align: center;
 `
 
-LogoText.propTypes = { ...Text.propTypes }
+// LogoText.propTypes = { ...Text.propTypes }

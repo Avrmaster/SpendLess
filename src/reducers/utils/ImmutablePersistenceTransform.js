@@ -1,5 +1,5 @@
 import Immutable from 'seamless-immutable'
-import R from 'ramda'
+import * as R from 'ramda'
 
 // is this object already Immutable?
 const isImmutable = R.has('asMutable')
