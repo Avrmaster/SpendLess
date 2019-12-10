@@ -1,7 +1,7 @@
 import styled from 'styled-components/native'
 import Text from 'components/Text'
 
-import { View, TouchableOpacity } from 'react-native'
+import { Image, View, TouchableOpacity } from 'react-native'
 
 export const ModalWrapper = styled.ScrollView`
   padding: 40px 15px 0;  

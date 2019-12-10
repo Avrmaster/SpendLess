@@ -1,75 +1,75 @@
 import React from 'react'
 
-import {RefreshControl, ScrollView, TouchableOpacity} from 'react-native'
-import {WishlistItem} from 'components'
+import { RefreshControl, ScrollView, TouchableOpacity } from 'react-native'
+import { WishlistItem } from 'components'
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome'
 
-import {Container} from './Wishlist.styles'
-import {WishlistNewModal} from './WishlistNewModal'
+import { Container } from './Wishlist.styles'
+import WishlistNewModal from './WishlistNewModal'
 import LineError from 'components/LineError'
 import Colors from '../../themes/Colors'
 import Header from '../../components/Header'
-import {View} from 'react-native'
+import { View } from 'react-native'
 import EmptyList from '../../components/EmptyList/EmptyList'
-import {deleteWishListItem} from '../../apiClient/Api'
+import { deleteWishListItem } from '../../apiClient/Api'
 
 
 export default class Wishlist extends React.Component {
-  state = {
-    modalVisible: false,
-  }
+	state = {
+		modalVisible: false,
+	}
 
-  componentDidMount(): void {
-    this.getWishList()
-  }
+	componentDidMount(): void {
+		this.getWishList()
+	}
 
-  getWishList = () => {
-    this.props.getWishList(this.props.user.id)
-  }
+	getWishList = () => {
+		this.props.getWishList(this.props.user.id)
+	}
 
-  removeItem = (id) => {
-    deleteWishListItem(id)
-      .then(() => {
-        this.getWishList()
-      })
-  }
+	removeItem = (id) => {
+		deleteWishListItem(id)
+			.then(() => {
+				this.getWishList()
+			})
+	}
 
-  setModalVisible = (visible) => {
-    this.setState({modalVisible: visible})
-  }
+	setModalVisible = (visible) => {
+		this.setState({ modalVisible: visible })
+	}
 
-  addNewWishItem = (name, price, photo_url) => {
-    this.props.createWishItem(this.props.user.id, name, price, photo_url)
-    this.setModalVisible(false)
-  }
+	addNewWishItem = (name, price, photo_url) => {
+		this.props.createWishItem(this.props.user.id, name, price, photo_url)
+		this.setModalVisible(false)
+	}
 
-  render() {
-    const {
-      wishList,
-      wishListFetching,
-      wishListError,
-    } = this.props
+	render() {
+		const {
+			wishList,
+			wishListFetching,
+			wishListError,
+		} = this.props
 
-    return (
-      <View style={{flex: 1, backgroundColor: Colors.background}}>
-        <Header
-          title={'Wish list'}
-          style={{
-            backgroundColor: Colors.main,
-          }}
-          rightComponent={<TouchableOpacity onPress={() => this.setModalVisible(true)}>
-            <AwesomeIcon
-              color={'white'}
-              size={25}
-              name={'plus'}
-            />
-          </TouchableOpacity>}
-        />
-        <EmptyList
-          show={false}
-          // show={!wishListFetching && !wishList?.length && !wishListError}
-          text={'There is nothing in your Wish list yet. \nClick "+" icon to create new'}
-        />
+		return (
+			<View style={{ flex: 1, backgroundColor: Colors.background }}>
+				<Header
+					title={'Wish list'}
+					style={{
+						backgroundColor: Colors.main,
+					}}
+					rightComponent={<TouchableOpacity onPress={() => this.setModalVisible(true)}>
+						<AwesomeIcon
+							color={'white'}
+							size={25}
+							name={'plus'}
+						/>
+					</TouchableOpacity>}
+				/>
+				<EmptyList
+					show={false}
+					// show={!wishListFetching && !wishList?.length && !wishListError}
+					text={'There is nothing in your Wish list yet. \nClick "+" icon to create new'}
+				/>
         <ScrollView
           refreshControl={
             <RefreshControl
@@ -100,7 +100,7 @@ export default class Wishlist extends React.Component {
             onSubmit={this.addNewWishItem}
           />
         </ScrollView>
-      </View>
-    )
-  }
+			</View>
+		)
+	}
 }

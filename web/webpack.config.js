@@ -23,9 +23,9 @@ const babelLoaderConfiguration = {
 		path.resolve(rootDirectory, 'node_modules/react-native-progress-circle'),
 		path.resolve(rootDirectory, 'node_modules/react-native-reanimated'),
 		path.resolve(rootDirectory, 'node_modules/react-native-gesture-handler'),
-		path.resolve(rootDirectory, 'node_modules/@react-navigation/native'),
 		path.resolve(rootDirectory, 'node_modules/@react-native-community'),
 		path.resolve(rootDirectory, 'node_modules/react-native-vector-icons'),
+		path.resolve(rootDirectory, 'node_modules/@react-navigation'),
 		path.resolve(rootDirectory, 'node_modules/react-navigation'),
 	],
 	use: {

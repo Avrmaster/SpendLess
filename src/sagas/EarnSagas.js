@@ -1,7 +1,7 @@
 import { call, put } from 'redux-saga/effects'
 import React from 'react'
 import { View } from 'react-native'
-import LottieView from 'lottie-react-native'
+// import LottieView from 'lottie-react-native'
 import Text from 'components/Text'
 
 import EarnActions from 'reducers/EarnReducer'
@@ -79,15 +79,6 @@ export function* createSpendingItem(action) {
 							borderRadius: 20,
 						}}
 					>
-						<LottieView
-							style={{
-								width: 300,
-								height: 300,
-							}}
-							autoPlay
-							loop
-							source={successAnimation}
-						/>
 						<Text
 							style={{
 								position: 'absolute',

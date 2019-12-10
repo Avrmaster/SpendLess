@@ -73,8 +73,7 @@ export default function WishlistNewModal(props) {
 					>
 						<ImageItself
 							source={{
-								uri: imageLink
-									||
+								uri: imageLink ||
 									'https://www.namepros.com/a/2018/05/106343_82907bfea9fe97e84861e2ee7c5b4f5b.png',
 							}}
 						/>
