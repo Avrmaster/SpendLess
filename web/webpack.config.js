@@ -3,9 +3,6 @@
 const path = require('path')
 const webpack = require('webpack')
 
-const browserPlugin = require('webpack-browser-plugin')
-// const chromeUserDataDir = 'your/path/here';
-
 const rootDirectory = path.resolve(__dirname, '../')
 const appDirectory = path.resolve(__dirname, '../src')
 const webDirectory = path.resolve(__dirname, '../web')
@@ -40,14 +37,12 @@ const babelLoaderConfiguration = {
 			// This aliases 'react-native' to 'react-native-web' and includes only
 			// the modules needed by the app.
 			plugins: [
-				// This is needed to polyfill ES6 async code in some of the above modules
-				'babel-polyfill',
 				// This aliases 'react-native' to 'react-native-web' to fool modules that only know
 				// about the former into some kind of compatibility.
 				'react-native-web',
 			],
 			// The 'react-native' preset is recommended to match React Native's packager
-			presets: ['react-native'],
+			presets: ['module:metro-react-native-babel-preset'],
 		},
 	},
 }
@@ -77,8 +72,6 @@ const fontsLoaderConfiguration = {
 
 module.exports = {
 	entry: [
-		// Need babel polyfills before we include the bundle
-		'babel-polyfill',
 		path.resolve(appDirectory, 'index.web.js'),
 	],
 	output: {
@@ -126,14 +119,6 @@ module.exports = {
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
 			__DEV__: process.env.NODE_ENV === 'production' || true,
-		}),
-		new browserPlugin({
-			openOptions: {
-				app: [
-					'chrome',
-					'--disable-web-security', // to enable CORS
-				],
-			},
 		}),
 	],
 
