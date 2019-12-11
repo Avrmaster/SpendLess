@@ -2,9 +2,8 @@ import styled from 'styled-components/native'
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome'
 import { ifIphoneX } from 'react-native-iphone-x-helper'
 import Text from 'components/Text'
-import Colors from '../../themes/Colors'
 
-import { View, TouchableOpacity } from 'react-native'
+import { View, TouchableOpacity, Image } from 'react-native'
 
 export const Container = styled(View)`
 	padding-top: ${ifIphoneX(50, 20)}px;

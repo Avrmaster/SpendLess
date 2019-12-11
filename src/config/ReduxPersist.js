@@ -1,6 +1,5 @@
 import autoMergeLevel1 from 'redux-persist/lib/stateReconciler/autoMergeLevel1'
-import storage from 'redux-persist/lib/storage'
-// import AsyncStorage from '@react-native-community/async-storage'
+import storage from './storage'
 
 import immutablePersistenceTransform from 'reducers/utils/ImmutablePersistenceTransform'
 import CleanupPersistenceTransform from 'reducers/utils/CleanupPersistenceTransofrm'

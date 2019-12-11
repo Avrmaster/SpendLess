@@ -14,7 +14,7 @@ export const LottieHeader = styled(LottieView)`
 `
 
 export const LottieCard = styled(LottieView)`
-	width: ${width}px;
+	width: ${300}px;
 	height: ${200}px;
 	margin-bottom: 30px;
 `
