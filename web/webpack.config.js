@@ -112,21 +112,6 @@ module.exports = {
 	],
 
 	devServer: {
-		// TODO: made this supportable by default
-		proxy: {
-			'/1.0': {
-				target: 'http://192.168.1.21:5000',
-				secure: false,
-				changeOrigin: true,
-				headers: {
-					Connection: 'keep-alive',
-					'Access-Control-Allow-Origin': '*',
-				},
-			},
-		},
-		headers: {
-			'Access-Control-Allow-Origin': '*',
-		},
 		contentBase: path.join(__dirname, '../public'),
 		compress: false,
 		port: 9000,
