@@ -1,22 +1,14 @@
-// web/webpack.config.js for
-
 const path = require('path')
 const webpack = require('webpack')
 
 const rootDirectory = path.resolve(__dirname, '../')
 const appDirectory = path.resolve(__dirname, '../src')
-const webDirectory = path.resolve(__dirname, '../web')
 
-// This is needed for webpack to compile JavaScript.
-// Many OSS React Native packages are not compiled to ES5 before being
-// published. If you depend on uncompiled packages they may cause webpack build
-// errors. To fix this webpack can be configured to compile to the necessary
-// `node_module`.
+/* This is needed for webpack to compile ours, React Native's & third party's
+* code  into the javascript, supported by browser. */
 const babelLoaderConfiguration = {
 	test: /\.jsx?$/,
-	// Add every directory that needs to be compiled by Babel during the build.
 	include: [
-		path.resolve(appDirectory, 'index.web.js'),
 		path.resolve(rootDirectory, 'src'),
 		path.resolve(rootDirectory, 'node_modules/styled-components/native'),
 		path.resolve(rootDirectory, 'node_modules/react-native-chart-kit'),
@@ -28,20 +20,19 @@ const babelLoaderConfiguration = {
 		path.resolve(rootDirectory, 'node_modules/react-native-vector-icons'),
 		path.resolve(rootDirectory, 'node_modules/@react-navigation'),
 		path.resolve(rootDirectory, 'node_modules/react-navigation'),
+		path.resolve(rootDirectory, 'node_modules/react-native'),
 	],
 	use: {
 		loader: 'babel-loader',
 		options: {
 			cacheDirectory: true,
-			// Babel configuration (or use .babelrc)
-			// This aliases 'react-native' to 'react-native-web' and includes only
-			// the modules needed by the app.
+			// This aliases 'react-native' to 'react-native-web'
 			plugins: [
 				// This aliases 'react-native' to 'react-native-web' to fool modules that only know
 				// about the former into some kind of compatibility.
 				'react-native-web',
 			],
-			// The 'react-native' preset is recommended to match React Native's packager
+			// The 'react-native' preset is recommended to match React Native's packager (& it's syntax)
 			presets: ['module:metro-react-native-babel-preset'],
 		},
 	},
@@ -58,7 +49,7 @@ const imageLoaderConfiguration = {
 	},
 }
 
-// This is needed for webpack to import static images in JavaScript files.
+// This is needed for webpack to import static files in JavaScript files (like fonts).
 const fontsLoaderConfiguration = {
 	test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
 	use: {
@@ -83,10 +74,9 @@ module.exports = {
 		// If you're working on a multi-platform React Native app, web-specific
 		// module implementations should be written in files using the extension
 		// `.web.js`.
-		extensions: ['.web.js', '.js', '.jsx'],
+		extensions: ['.web.js', '.web.jsx', '.js', '.jsx'],
 
 		alias: {
-			'react-native$': 'react-native-web',
 			'assets': path.resolve(appDirectory, './assets'),
 			'apiClient': path.resolve(appDirectory, './apiClient'),
 			'components': path.resolve(appDirectory, './components'),
@@ -99,8 +89,7 @@ module.exports = {
 			'reducers': path.resolve(appDirectory, './reducers'),
 			'sagas': path.resolve(appDirectory, './sagas'),
 			'themes': path.resolve(appDirectory, './themes'),
-
-			'web-modules': path.resolve(webDirectory, './node_modules'),
+			'web-modules': path.resolve(rootDirectory, './web/node_modules'),
 		},
 	},
 
@@ -123,6 +112,7 @@ module.exports = {
 	],
 
 	devServer: {
+		// TODO: made this supportable by default
 		proxy: {
 			'/1.0': {
 				target: 'http://192.168.1.21:5000',
