@@ -59,6 +59,18 @@ const imageLoaderConfiguration = {
 	},
 }
 
+// This is needed for webpack to import static images in JavaScript files.
+const fontsLoaderConfiguration = {
+	test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+	use: {
+		loader: 'file-loader',
+		options: {
+			name: '[name].[ext]',
+			outputPath: 'fonts/'
+		}
+	},
+}
+
 module.exports = {
 	entry: [
 		// Need babel polyfills before we include the bundle
@@ -96,6 +108,7 @@ module.exports = {
 		rules: [
 			babelLoaderConfiguration,
 			imageLoaderConfiguration,
+			fontsLoaderConfiguration,
 		],
 	},
 

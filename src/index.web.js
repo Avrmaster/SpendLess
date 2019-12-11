@@ -2,6 +2,8 @@ import React from 'react'
 import { AppRegistry } from 'react-native'
 import App from './containers/App'
 
+import 'react-web-vector-icons/fonts'
+
 AppRegistry.registerComponent('App', () => App)
 AppRegistry.runApplication('App', {
 	initialProps: {},
