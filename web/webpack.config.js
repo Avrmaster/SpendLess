@@ -3,6 +3,9 @@
 const path = require('path')
 const webpack = require('webpack')
 
+const browserPlugin = require('webpack-browser-plugin')
+// const chromeUserDataDir = 'your/path/here';
+
 const rootDirectory = path.resolve(__dirname, '../')
 const appDirectory = path.resolve(__dirname, '../src')
 const webDirectory = path.resolve(__dirname, '../web')
@@ -79,6 +82,7 @@ module.exports = {
 		path.resolve(appDirectory, 'index.web.js'),
 	],
 	output: {
+		crossOriginLoading: 'anonymous',
 		filename: 'bundle.web.js',
 		path: path.resolve(rootDirectory, 'public'),
 	},
@@ -123,12 +127,34 @@ module.exports = {
 			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
 			__DEV__: process.env.NODE_ENV === 'production' || true,
 		}),
+		new browserPlugin({
+			openOptions: {
+				app: [
+					'chrome',
+					'--disable-web-security', // to enable CORS
+				],
+			},
+		}),
 	],
 
 	devServer: {
+		proxy: {
+			'/1.0': {
+				target: 'http://192.168.1.21:5000',
+				secure: false,
+				changeOrigin: true,
+				headers: {
+					Connection: 'keep-alive',
+					'Access-Control-Allow-Origin': '*',
+				},
+			},
+		},
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+		},
 		contentBase: path.join(__dirname, '../public'),
 		compress: false,
 		port: 9000,
-		host: '0.0.0.0',
+		host: '127.0.0.1',
 	},
 }

@@ -66,6 +66,8 @@
             {{/isSingleton}}
         {{/isHeaderParameter}}
 
+        headers['Access-Control-Allow-Origin'] = ['*']
+
         {{#isBodyParameter}}
             if(parameters['{{&camelCaseName}}'] !== undefined){
                 body = parameters['{{&camelCaseName}}'];

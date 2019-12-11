@@ -15,10 +15,6 @@ export default function (props) {
 
 	const style = (props.style && StyleSheet.flatten(props.style)) || {}
 
-	console.log({
-		style
-	})
-
 	return (
 		<LottieView
 			options={defaultOptions}

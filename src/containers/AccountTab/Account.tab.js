@@ -29,7 +29,7 @@ export default class AccountTab extends React.Component {
   }
 
   updateForUser = (userId) => {
-    getPieChart(userId)
+    getPieChart(+userId)
       .then(pieData => this.setState(state => {
         return {pieData: mapPieData(pieData, this.props.subcategories)}
       }))

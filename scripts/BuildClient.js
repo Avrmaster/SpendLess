@@ -37,7 +37,7 @@ request
       })
 
       return fs.writeFile(
-        path.join(__dirname, '..', 'src', 'api', `${coreApiName}.js`),
+        path.join(__dirname, '..', 'src', 'apiClient', `${coreApiName}.js`),
         reactSourceCode,
         err => {
           // throws an error, you could also catch it here
