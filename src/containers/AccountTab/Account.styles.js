@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
-// import LottieView from 'lottie-react-native'
-import { Dimensions, View, View as LottieView } from 'react-native'
+import LottieView from 'components/LottieView'
+import { Dimensions, View } from 'react-native'
 
 import Text from 'components/Text'
 

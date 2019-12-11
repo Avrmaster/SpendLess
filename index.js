@@ -2,7 +2,7 @@ import 'react-native-gesture-handler'
 import { AppRegistry } from 'react-native'
 import * as PropTypes from 'prop-types'
 
-import App from 'containers/App'
+// import App from 'containers/App'
 
 PropTypes.component = PropTypes.oneOfType([
 	PropTypes.func,
@@ -26,4 +26,4 @@ if (window.__FETCH_SUPPORT__) {
 	window.__FETCH_SUPPORT__.blob = false
 }
 
-AppRegistry.registerComponent(appName, () => App)
+AppRegistry.registerComponent(appName, () => () => null)

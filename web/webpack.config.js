@@ -5,6 +5,7 @@ const webpack = require('webpack')
 
 const rootDirectory = path.resolve(__dirname, '../')
 const appDirectory = path.resolve(__dirname, '../src')
+const webDirectory = path.resolve(__dirname, '../web')
 
 // This is needed for webpack to compile JavaScript.
 // Many OSS React Native packages are not compiled to ES5 before being
@@ -66,8 +67,8 @@ const fontsLoaderConfiguration = {
 		loader: 'file-loader',
 		options: {
 			name: '[name].[ext]',
-			outputPath: 'fonts/'
-		}
+			outputPath: 'fonts/',
+		},
 	},
 }
 
@@ -101,6 +102,8 @@ module.exports = {
 			'reducers': path.resolve(appDirectory, './reducers'),
 			'sagas': path.resolve(appDirectory, './sagas'),
 			'themes': path.resolve(appDirectory, './themes'),
+
+			'web-modules': path.resolve(webDirectory, './node_modules'),
 		},
 	},
 
