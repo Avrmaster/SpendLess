@@ -1,5 +1,7 @@
 # SpendLess. Junction 2020. Powered by Flashback 👽. 
-Application for Junction 2020's BlackRock challenge. 
+Application for Junction 2020's BlackRock challenge.
+
+Backend repo: https://github.com/kirill-kundik/SpendLess-Backend
 
 [spendings]: https://i.imgur.com/LE8Jmas.png
 [challenges]: https://i.imgur.com/HFup2Os.png
